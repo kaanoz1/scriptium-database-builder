@@ -9,7 +9,6 @@ template <typename TFileInput, typename TOutput>
 class Builder {
     public:
         virtual ~Builder() = default;
-
         /*
          @brief This functions build the declared input via travelling along the file it has given.
          */

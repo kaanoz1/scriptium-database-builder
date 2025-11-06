@@ -33,4 +33,13 @@ add_executable(scriptium_database_builder main.cpp
         Model/Scripture/Scripture.cpp
         Model/Scripture/Scripture.h
         Model/ScriptureMeaning/ScriptureMeaning.cpp
-        Model/ScriptureMeaning/ScriptureMeaning.h)
+        Model/ScriptureMeaning/ScriptureMeaning.h
+        Extractor/Miner/JsonMiner/JsonMiner.cpp
+        Extractor/Miner/JsonMiner/JsonMiner.h
+        Extractor/Builder/JsonBuilder/JsonBuilder.cpp
+        Extractor/Builder/JsonBuilder/JsonBuilder.h
+        Extractor/Builder/JsonBuilder/JsonBuilder.h)
+
+find_package(nlohmann_json REQUIRED)
+
+target_link_libraries(scriptium_database_builder PRIVATE nlohmann_json::nlohmann_json)
