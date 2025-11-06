@@ -11,7 +11,6 @@ namespace scrptm {
     public:
         virtual ~Loader() = default;
 
-
         /*
          @brief This function should load the file or data into the memory for given strategy.
          */

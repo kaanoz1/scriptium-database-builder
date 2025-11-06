@@ -14,14 +14,12 @@ private:
     const std::string_view langCode;
 
 public:
-    Language(const std::string_view lang_own, const std::string_view lang_english, const std::string_view lang_code)
-        : langOwn(lang_own),
-          langEnglish(lang_english),
-          langCode(lang_code) {
-    }
+    Language(std::string_view lang_own, std::string_view lang_english, std::string_view lang_code);
 
     [[nodiscard]] const std::string_view getLanguageCode() const;
+
     [[nodiscard]] const std::string_view getLanguageOwn() const;
+
     [[nodiscard]] const std::string_view getLanguageEnglish() const;
 };
 

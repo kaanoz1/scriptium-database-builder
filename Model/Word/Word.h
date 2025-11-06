@@ -19,14 +19,8 @@ private:
     const std::pmr::vector<std::reference_wrapper<Root>>& roots;
 
 public:
-Word(const unsigned int sequence_number, const std::string_view text, const std::string_view text_without_vowel,
-        const std::string_view text_simplified, const std::pmr::vector<std::reference_wrapper<Root>> &roots)
-        : sequence_number(sequence_number),
-          text(text),
-          textWithoutVowel(text_without_vowel),
-          textSimplified(text_simplified),
-          roots(roots) {
-    }
+Word(unsigned int sequence_number, std::string_view text, std::string_view text_without_vowel,
+        std::string_view text_simplified, const std::pmr::vector<std::reference_wrapper<Root>> &roots);
 
     [[nodiscard]] const unsigned int getSequenceNumber() const;
     [[nodiscard]] const std::string_view getText() const;

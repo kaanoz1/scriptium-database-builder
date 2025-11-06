@@ -13,10 +13,8 @@ private:
     const Language& language;
 
 public:
-    SectionMeaning(const std::string_view meaning, const Language &language)
-        : meaning(meaning),
-          language(language) {
-    }
+    SectionMeaning(const std::string_view meaning, const Language &language);
+
 
     [[nodiscard]] const std::string_view getMeaning() const;
     [[nodiscard]] const Language& getLanguage() const;

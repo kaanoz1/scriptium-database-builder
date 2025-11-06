@@ -11,6 +11,7 @@ namespace scrptm {
     public:
         virtual ~Builder() = default;
 
+        
         /*
          @brief This functions build the declared input via travelling along the file it has given.
          */

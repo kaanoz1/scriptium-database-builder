@@ -20,14 +20,9 @@ private:
     const std::pmr::vector<std::reference_wrapper<ChapterMeaning>>& meanings;
 
 public:
-Chapter(const unsigned short number, const std::string_view name,
+Chapter( unsigned short number,  std::string_view name,
         const std::pmr::vector<std::reference_wrapper<Verse>> &verses,
-        const std::pmr::vector<std::reference_wrapper<ChapterMeaning>> &meanings)
-        : number(number),
-          name(name),
-          verses(verses),
-          meanings(meanings) {
-    }
+        const std::pmr::vector<std::reference_wrapper<ChapterMeaning>> &meanings);
 
     [[nodiscard]] const unsigned short getNumber() const;
     [[nodiscard]] const std::string_view getName() const;

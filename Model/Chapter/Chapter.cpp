@@ -4,6 +4,14 @@
 
 #include "Chapter.h"
 
+Chapter::Chapter(unsigned short number, std::string_view name,
+                 const std::pmr::vector<std::reference_wrapper<Verse> > &verses,
+                 const std::pmr::vector<std::reference_wrapper<ChapterMeaning> > &meanings) : number(number),
+    name(name),
+    verses(verses),
+    meanings(meanings) {
+}
+
 
 const std::string_view Chapter::getName() const {
     return this->name;

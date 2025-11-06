@@ -21,13 +21,7 @@ class Scripture {
 public:
 Scripture(const std::string_view name, const unsigned char code, const unsigned char number,
         const std::pmr::vector<std::reference_wrapper<ScriptureMeaning>> &meanings,
-        const std::pmr::vector<std::reference_wrapper<Section>> &sections)
-        : name(name),
-          code(code),
-          number(number),
-          meanings(meanings),
-          sections(sections) {
-    }
+        const std::pmr::vector<std::reference_wrapper<Section>> &sections);
 
     [[nodiscard]] const std::string_view getName() const;
     [[nodiscard]] const unsigned char getCode() const;

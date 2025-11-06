@@ -20,12 +20,8 @@ private:
 public:
     Section(unsigned short number, const std::string_view name,
         const std::pmr::vector<std::reference_wrapper<Chapter>> &chapters,
-        const std::pmr::vector<std::reference_wrapper<SectionMeaning>> &meanings)
-        : number(number),
-          name(name),
-          chapters(chapters),
-          meanings(meanings) {
-    }
+        const std::pmr::vector<std::reference_wrapper<SectionMeaning>> &meanings);
+
 
     [[nodiscard]] const unsigned short getNumber() const;
     [[nodiscard]] const std::string_view getName() const;

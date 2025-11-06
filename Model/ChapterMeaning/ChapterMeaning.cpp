@@ -4,6 +4,11 @@
 
 #include "ChapterMeaning.h"
 
+ChapterMeaning::ChapterMeaning(const std::string_view meaning, const Language &language) : meaning(meaning),
+    language(language) {
+}
+
+
 const std::string_view ChapterMeaning::getMeaning() const {
     return this->meaning;
 }
@@ -11,4 +16,3 @@ const std::string_view ChapterMeaning::getMeaning() const {
 const Language &ChapterMeaning::getLanguage() const {
     return this->language;
 }
-

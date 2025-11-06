@@ -6,23 +6,20 @@
 #define SCRIPTIUM_DATABASE_BUILDER_CHAPTERMEANING_H
 #include <string_view>
 
-#include "../Chapter/Chapter.h"
 #include "../Language/Language.h"
 
 
 class ChapterMeaning {
 private:
     const std::string_view meaning;
-    const Language& language;
+    const Language &language;
 
 public:
-    ChapterMeaning(const std::string_view meaning, const Language &language)
-        : meaning(meaning),
-          language(language) {
-    }
+    ChapterMeaning(const std::string_view meaning, const Language &language);
 
     [[nodiscard]] const std::string_view getMeaning() const;
-    [[nodiscard]] const Language& getLanguage() const;
+
+    [[nodiscard]] const Language &getLanguage() const;
 };
 
 

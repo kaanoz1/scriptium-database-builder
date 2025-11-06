@@ -16,10 +16,7 @@ class Transliteration {
 
 
 public:
-    Transliteration(const std::string_view text, const Language &language)
-        : text(text),
-          language(language) {
-    }
+    Transliteration(std::string_view text, const Language &language);
 
 
     [[nodiscard]] const Language& getLanguage() const;

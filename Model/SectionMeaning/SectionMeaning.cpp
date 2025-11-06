@@ -4,6 +4,9 @@
 
 #include "SectionMeaning.h"
 
+SectionMeaning::SectionMeaning(const std::string_view meaning, const Language &language) : meaning(meaning),
+    language(language) {
+}
 
 const std::string_view SectionMeaning::getMeaning() const {
     return this->meaning;
@@ -12,4 +15,3 @@ const std::string_view SectionMeaning::getMeaning() const {
 const Language &SectionMeaning::getLanguage() const {
     return this->language;
 }
-

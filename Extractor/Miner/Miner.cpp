@@ -6,6 +6,18 @@
 
 #include <iostream>
 
+template<typename TInputFile, typename TOutput>
+scrptm::Miner<TInputFile, TOutput>::Miner(std::unique_ptr<Loader<TInputFile> > loader,
+                                          std::unique_ptr<Validator<TInputFile> > validator,
+                                          std::unique_ptr<Builder<TInputFile, TOutput> > builder) : m_loader(std::move(
+        loader)),
+    m_validator(std::move(validator)),
+    m_builder(std::move(builder)) {
+    assert(m_loader != nullptr && "Loader must not be null");
+    assert(m_validator != nullptr && "Validator must not be null");
+    assert(m_builder != nullptr && "Builder must not be null");
+}
+
 
 template<typename TInputFile, typename TOutput>
 const TOutput &scrptm::Miner<TInputFile, TOutput>::create() const {

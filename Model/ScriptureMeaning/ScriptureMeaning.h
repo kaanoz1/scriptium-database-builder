@@ -13,10 +13,7 @@ private:
     const Language& language;
 
 public:
-    ScriptureMeaning(const std::string_view meaning, const Language &language)
-        : meaning(meaning),
-          language(language) {
-    }
+    ScriptureMeaning(std::string_view meaning, const Language &language);
 
     [[nodiscard]] const std::string_view getMeaning() const;
     [[nodiscard]] const Language& getLanguage() const;

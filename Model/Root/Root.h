@@ -12,10 +12,7 @@ private:
     const std::string_view latin;
     const std::string_view own;
 public:
-    Root(const std::string_view latin, const std::string_view own)
-        : latin(latin),
-          own(own) {
-    }
+    Root(std::string_view latin, std::string_view own);
 
     [[nodiscard]] const std::string_view getLatin() const;
     [[nodiscard]] const std::string_view getOwn() const;

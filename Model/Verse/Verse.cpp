@@ -4,6 +4,18 @@
 
 #include "Verse.h"
 
+Verse::Verse(unsigned short number, std::string_view text, std::string_view text_without_vowel,
+             std::string_view text_simplified, const std::pmr::vector<std::reference_wrapper<Word> > &words,
+             const std::pmr::vector<std::reference_wrapper<Transliteration> > &transliterations)
+    : number(number),
+      text(text),
+      textWithoutVowel(text_without_vowel),
+      textSimplified(text_simplified),
+      words(words),
+      transliterations(transliterations) {
+}
+
+
 const unsigned short Verse::getNumber() const {
     return this->number;
 }
