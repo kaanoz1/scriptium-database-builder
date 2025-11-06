@@ -6,18 +6,17 @@
 
 #include <iostream>
 
+
 template<typename TInputFile, typename TOutput>
-const TOutput &Miner<TInputFile, TOutput>::create() const {
+const TOutput &scrptm::Miner<TInputFile, TOutput>::create() const {
+    TInputFile data = m_loader->load();
+    try {
+        if (!m_validator->validate(data))
+            throw std::runtime_error("Verify failed.");
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+        throw;
+    }
 
-        TInputFile data = m_loader->load();
-        try {
-                if (!m_validator->validate(data))
-                        throw std::runtime_error("Verify failed.");
-
-        } catch (const std::exception& e) {
-                std::cerr << e.what() << std::endl;
-                throw;
-        }
-
-        return m_builder->build(data);
+    return m_builder->build(data);
 }
