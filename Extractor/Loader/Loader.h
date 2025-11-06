@@ -5,18 +5,17 @@
 #ifndef SCRIPTIUM_DATABASE_BUILDER_LOADER_H
 #define SCRIPTIUM_DATABASE_BUILDER_LOADER_H
 
-template <typename TInputFile>
-class Loader {
+namespace scrptm {
+    template<typename TInputFile>
+    class Loader {
     public:
-    virtual ~Loader() = default;
+        virtual ~Loader() = default;
 
 
-
-    /*
-     @brief This function should load the file or data into the memory for given strategy.
-     */
-    virtual const TInputFile& load() const = 0;
-};
-
-
+        /*
+         @brief This function should load the file or data into the memory for given strategy.
+         */
+        virtual const TInputFile &load() const = 0;
+    };
+}
 #endif //SCRIPTIUM_DATABASE_BUILDER_LOADER_H
