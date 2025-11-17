@@ -4,20 +4,15 @@
 
 #ifndef SCRIPTIUM_DATABASE_BUILDER_SCRIPTUREMEANING_H
 #define SCRIPTIUM_DATABASE_BUILDER_SCRIPTUREMEANING_H
-#include <string_view>
-#include "../Language/Language.h"
 
-class ScriptureMeaning {
-private:
-    const std::string_view meaning;
-    const Language& language;
+#include "../Meaning/Meaning.h"
 
-public:
-    ScriptureMeaning(std::string_view meaning, const Language &language);
+namespace scrptm {
+    class ScriptureMeaning : public Meaning {
 
-    [[nodiscard]] const std::string_view getMeaning() const;
-    [[nodiscard]] const Language& getLanguage() const;
-};
+    };
+
+}
 
 
 #endif //SCRIPTIUM_DATABASE_BUILDER_SCRIPTUREMEANING_H

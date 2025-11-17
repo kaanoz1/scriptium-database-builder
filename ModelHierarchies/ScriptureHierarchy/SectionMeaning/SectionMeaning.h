@@ -6,19 +6,12 @@
 #define SCRIPTIUM_DATABASE_BUILDER_SECTIONMEANING_H
 #include <string_view>
 #include "../Language/Language.h"
+#include "../Meaning/Meaning.h"
 
-class SectionMeaning {
-private:
-    const std::string_view meaning;
-    const Language& language;
+namespace scrptm {
+    class SectionMeaning : public Meaning {
 
-public:
-    SectionMeaning(const std::string_view meaning, const Language &language);
-
-
-    [[nodiscard]] const std::string_view getMeaning() const;
-    [[nodiscard]] const Language& getLanguage() const;
-};
+}
 
 
 #endif //SCRIPTIUM_DATABASE_BUILDER_SECTIONMEANING_H

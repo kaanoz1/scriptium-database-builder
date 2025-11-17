@@ -4,17 +4,9 @@
 
 #include "ScriptureMeaning.h"
 
-ScriptureMeaning::ScriptureMeaning(std::string_view meaning, const Language &language)
-        : meaning(meaning),
-          language(language) {
-}
+namespace scrptm {
 
 
-const std::string_view ScriptureMeaning::getMeaning() const {
-    return this->meaning;
 }
 
-const Language &ScriptureMeaning::getLanguage() const {
-    return this->language;
-}
 
