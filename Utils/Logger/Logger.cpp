@@ -1,7 +1,3 @@
-//
-// Created by prag on 11/17/25.
-//
-
 #include "Logger.h"
 #include <ctime>
 #include <sstream>
@@ -33,29 +29,22 @@ namespace scrptm {
     }
 
     void Logger::Log(LogLevel level, std::string_view message, std::ostream &stream) {
-        // 1. Thread-Safe Kilitleme
         std::lock_guard<std::mutex> lock(s_mutex);
 
-        // 2. 🕒 Zaman Damgası Oluşturma
         auto now = std::chrono::system_clock::now();
         std::time_t now_c = std::chrono::system_clock::to_time_t(now);
 
-        // C++17 sonrası std::put_time ile uyumlu olması için yerel zamana dönüştürme
         std::tm timeinfo = *std::localtime(&now_c);
 
         std::stringstream ss;
-        // Zaman formatı: YYYY-MM-DD HH:MM:SS
         ss << std::put_time(&timeinfo, "%Y-%m-%d %H:%M:%S");
 
-        // 3. Log Çıktısını Hazırlama
-
-        // Çıktı formatı: [ZAMAN] [RENKLİ SEVİYE] MESAJ
         stream << "[" << ss.str() << "] "
-                << getLevelColorCode(level) // Renk kodu
+                << getLevelColorCode(level)
                 << "[" << getLevelAbbreviation(level) << "]"
-                << "\033[0m " // Rengi sıfırla
+                << "\033[0m "
                 << message << "\n";
 
         stream.flush();
     }
-} // scrptm
+}

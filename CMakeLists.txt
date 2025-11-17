@@ -38,7 +38,9 @@ add_executable(scriptium_database_builder main.cpp
         ModelHierarchies/ScriptureHierarchy/Meaning/Meaning.cpp
         ModelHierarchies/ScriptureHierarchy/Meaning/Meaning.h
         Utils/Logger/Logger.cpp
-        Utils/Logger/Logger.h)
+        Utils/Logger/Logger.h
+        Inspectors/ScriptureInspector/ScriptureInspector.cpp
+        Inspectors/ScriptureInspector/ScriptureInspector.h)
 
 find_package(nlohmann_json REQUIRED)
 
