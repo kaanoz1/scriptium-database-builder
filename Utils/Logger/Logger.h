@@ -1,4 +1,3 @@
-
 #ifndef SCRIPTIUM_DATABASE_BUILDER_LOGGER_H
 #define SCRIPTIUM_DATABASE_BUILDER_LOGGER_H
 
@@ -6,7 +5,6 @@
 #include <mutex>
 
 namespace scrptm {
-
     class Logger {
     public:
         enum class LogLevel {
@@ -55,4 +53,4 @@ namespace scrptm {
     };
 }
 
-#endif //SCRIPTIUM_DATABASE_BUILDER_LOGGER_H
+#endif

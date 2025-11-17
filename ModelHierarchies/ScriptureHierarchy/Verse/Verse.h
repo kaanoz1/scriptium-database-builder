@@ -36,4 +36,4 @@ namespace scrptm {
 }
 
 
-#endif //SCRIPTIUM_DATABASE_BUILDER_VERSE_H
+#endif

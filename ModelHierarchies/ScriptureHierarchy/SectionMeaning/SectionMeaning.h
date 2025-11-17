@@ -12,4 +12,4 @@ namespace scrptm {
 }
 
 
-#endif //SCRIPTIUM_DATABASE_BUILDER_SECTIONMEANING_H
+#endif

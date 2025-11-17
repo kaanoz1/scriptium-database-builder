@@ -14,4 +14,4 @@ namespace scrptm {
         virtual const TInputFile &load() const = 0;
     };
 }
-#endif //SCRIPTIUM_DATABASE_BUILDER_LOADER_H
+#endif

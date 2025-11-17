@@ -14,4 +14,4 @@ namespace scrptm {
         virtual ~Validator() = default;
     };
 }
-#endif //SCRIPTIUM_DATABASE_BUILDER_VALIDATOR_H
+#endif

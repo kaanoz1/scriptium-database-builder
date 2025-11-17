@@ -21,4 +21,4 @@ namespace scrptm {
 }
 
 
-#endif //SCRIPTIUM_DATABASE_BUILDER_TRANSLITERATION_H
+#endif

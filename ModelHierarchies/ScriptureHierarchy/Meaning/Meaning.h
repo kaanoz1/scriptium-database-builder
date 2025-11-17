@@ -15,6 +15,6 @@ namespace scrptm {
         [[nodiscard]] const std::string_view getMeaning() const;
         [[nodiscard]] const Language& getLanguage() const;
     };
-} // scrptm
+}
 
-#endif //SCRIPTIUM_DATABASE_BUILDER_MEANING_H
+#endif

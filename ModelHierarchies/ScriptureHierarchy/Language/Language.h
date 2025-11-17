@@ -22,4 +22,4 @@ namespace scrptm {
 }
 
 
-#endif //SCRIPTIUM_DATABASE_BUILDER_LANGUAGE_H
+#endif

@@ -1,6 +1,3 @@
-//
-// Created by prag on 11/17/25.
-//
 
 #ifndef SCRIPTIUM_DATABASE_BUILDER_CONSTANTS_H
 #define SCRIPTIUM_DATABASE_BUILDER_CONSTANTS_H
@@ -11,6 +8,6 @@ namespace constants {
             inline constexpr unsigned char sectionCount = 39;
         }
     }
-} // constants
+}
 
-#endif //SCRIPTIUM_DATABASE_BUILDER_CONSTANTS_H
+#endif

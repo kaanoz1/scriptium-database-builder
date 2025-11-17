@@ -16,4 +16,4 @@ namespace scrptm {
     };
 }
 
-#endif //SCRIPTIUM_DATABASE_BUILDER_MULTIPLEFACTORY_H
+#endif

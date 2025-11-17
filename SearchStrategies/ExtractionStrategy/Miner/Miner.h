@@ -29,4 +29,4 @@ namespace scrptm {
 }
 
 
-#endif //SCRIPTIUM_DATABASE_BUILDER_MINER_H
+#endif

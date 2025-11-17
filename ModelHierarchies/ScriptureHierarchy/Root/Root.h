@@ -19,4 +19,4 @@ namespace scrptm {
 }
 
 
-#endif //SCRIPTIUM_DATABASE_BUILDER_ROOT_H
+#endif

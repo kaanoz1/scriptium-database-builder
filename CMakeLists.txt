@@ -47,6 +47,19 @@ add_executable(scriptium_database_builder main.cpp
         Factories/AbstractFactories/Definitions/SingleFactory/SingleFactory.h
         Factories/AbstractFactories/Definitions/MultipleFactory/MultipleFactory.cpp
         Factories/AbstractFactories/Definitions/MultipleFactory/MultipleFactory.h
+        Factories/AbstractFactories/RootFactory/RootFactory.cpp
+        Factories/AbstractFactories/RootFactory/RootFactory.h
+        Factories/AbstractFactories/RootFactory/RootFactory.cpp
+        Factories/AbstractFactories/RootFactory/RootFactory.h
+        Factories/AbstractFactories/RootFactory/RootFactory.cpp
+        Factories/AbstractFactories/RootFactory/RootFactory.h
+        Factories/AbstractFactories/RootFactory/RootFactory.cpp
+        Factories/AbstractFactories/RootFactory/RootFactory.h
+        Factories/AbstractFactories/RootFactory/RootFactory.cpp
+        Factories/AbstractFactories/RootFactory/RootFactory.h
+        Factories/AbstractFactories/RootFactory.h
+        Factories/AbstractFactories/RootFactory/RootFactory.cpp
+        Factories/AbstractFactories/RootFactory/RootFactory.h
 )
 
 find_package(nlohmann_json REQUIRED)

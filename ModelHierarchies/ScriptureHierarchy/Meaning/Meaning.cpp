@@ -13,4 +13,4 @@ namespace scrptm {
     const Language &Meaning::getLanguage() const {
         return this->language;
     }
-} // scrptm
+}
