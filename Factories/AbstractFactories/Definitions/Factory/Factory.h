@@ -3,13 +3,16 @@
 
 namespace scrptm {
     class Factory {
-    protected:
-        Factory() = default;
-
     public:
+        Factory(const Factory &) = delete;
 
-        Factory(const Factory&) = delete;
-        Factory operator=(const Factory&&) = delete;
+        Factory(Factory &&) = delete;
+
+        Factory &operator=(const Factory &) = delete;
+
+        Factory &operator=(Factory &&) = delete;
+
+        virtual ~Factory() = default;
     };
 }
 
