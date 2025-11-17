@@ -43,6 +43,10 @@ add_executable(scriptium_database_builder main.cpp
         Inspectors/ScriptureInspector/ScriptureInspector.h
         Factories/AbstractFactories/Definitions/Factory/Factory.cpp
         Factories/AbstractFactories/Definitions/Factory/Factory.h
+        Factories/AbstractFactories/Definitions/SingleFactory/SingleFactory.cpp
+        Factories/AbstractFactories/Definitions/SingleFactory/SingleFactory.h
+        Factories/AbstractFactories/Definitions/MultipleFactory/MultipleFactory.cpp
+        Factories/AbstractFactories/Definitions/MultipleFactory/MultipleFactory.h
 )
 
 find_package(nlohmann_json REQUIRED)
