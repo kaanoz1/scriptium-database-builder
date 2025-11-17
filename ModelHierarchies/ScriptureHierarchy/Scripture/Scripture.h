@@ -19,7 +19,7 @@ namespace scrptm {
         const std::pmr::vector<std::reference_wrapper<Section> > &sections;
 
     public:
-        Scripture(const std::string_view name, const unsigned char code, const unsigned char number,
+        Scripture(std::string_view name, unsigned char code, unsigned char number,
                   const std::pmr::vector<std::reference_wrapper<ScriptureMeaning> > &meanings,
                   const std::pmr::vector<std::reference_wrapper<Section> > &sections);
 

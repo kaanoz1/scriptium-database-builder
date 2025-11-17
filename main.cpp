@@ -1,14 +1,8 @@
 
-#include <iostream>
-
-#include "ModelHierarchies/ScriptureHierarchy/ChapterMeaning/ChapterMeaning.h"
+#include "ModelHierarchies/ScriptureHierarchy/Scripture/Scripture.h"
 
 int main() {
-     int x = 5;
-
-     scrptm::ChapterMeaning meaning{ scrptm::Meaning("meaning", scrptm::Language("laja", "asdf", "jhasdklf")), };
-
-     std::cout << meaning.getLanguage().getLanguageCode() << std::endl;
+     int x = 19;
 
      return 0;
 }
