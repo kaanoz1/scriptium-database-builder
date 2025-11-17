@@ -11,7 +11,7 @@
 #include "../ScriptureMeaning/ScriptureMeaning.h"
 
 namespace scrptm {
-    class Scripture {
+     class Scripture {
         const std::string_view name;
         const unsigned char code;
         const unsigned char number;

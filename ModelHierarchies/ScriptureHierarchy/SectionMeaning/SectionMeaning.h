@@ -10,7 +10,8 @@
 
 namespace scrptm {
     class SectionMeaning : public Meaning {
-
+        using Meaning::Meaning;
+    };
 }
 
 

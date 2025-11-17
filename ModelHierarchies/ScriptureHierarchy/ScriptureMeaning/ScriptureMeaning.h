@@ -9,7 +9,7 @@
 
 namespace scrptm {
     class ScriptureMeaning : public Meaning {
-
+        using Meaning::Meaning;
     };
 
 }
