@@ -40,7 +40,10 @@ add_executable(scriptium_database_builder main.cpp
         Utils/Logger/Logger.cpp
         Utils/Logger/Logger.h
         Inspectors/ScriptureInspector/ScriptureInspector.cpp
-        Inspectors/ScriptureInspector/ScriptureInspector.h)
+        Inspectors/ScriptureInspector/ScriptureInspector.h
+        Factories/AbstractFactories/Definitions/Factory/Factory.cpp
+        Factories/AbstractFactories/Definitions/Factory/Factory.h
+)
 
 find_package(nlohmann_json REQUIRED)
 

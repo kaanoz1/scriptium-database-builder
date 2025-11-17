@@ -1,6 +1,3 @@
-//
-// Created by prag on 11/17/25.
-//
 
 #ifndef SCRIPTIUM_DATABASE_BUILDER_LOGGER_H
 #define SCRIPTIUM_DATABASE_BUILDER_LOGGER_H

@@ -1,9 +1,7 @@
-//
-// Created by prag on 11/17/25.
-//
 
 #ifndef SCRIPTIUM_DATABASE_BUILDER_SCRIPTUREINSPECTOR_H
 #define SCRIPTIUM_DATABASE_BUILDER_SCRIPTUREINSPECTOR_H
+
 #include <memory>
 #include <tabulate/table.hpp>
 #include "../../ModelHierarchies/ScriptureHierarchy/Scripture/Scripture.h"
