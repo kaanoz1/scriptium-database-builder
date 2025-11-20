@@ -55,6 +55,8 @@ add_executable(scriptium_database_builder main.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahRawVerseOfWordFile/TorahRawVerseOfWordFile.h
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahRawChapterOfWordFile/TorahRawChapterOfWordFile.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahRawChapterOfWordFile/TorahRawChapterOfWordFile.h
+        Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionWordFile/TorahSectionWordFile.cpp
+        Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionWordFile/TorahSectionWordFile.h
 )
 
 find_package(nlohmann_json REQUIRED)
