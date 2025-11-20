@@ -13,13 +13,13 @@ namespace scrptm {
         TorahRawWord(std::string_view text, std::string_view lemma,
                      unsigned int index);
 
-        const std::string_view getText() const;
+        std::string_view getText() const;
 
-        const std::string_view getLemma() const;
+        std::string_view getLemma() const;
 
-        const unsigned int getIndex() const;
+        unsigned int getIndex() const;
 
-        const unsigned short getLemmaId() const;
+        unsigned short getLemmaId() const;
     };
 }
 

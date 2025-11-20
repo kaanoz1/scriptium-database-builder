@@ -1,5 +1,7 @@
 #include "TorahRawWord.h"
 
+#include <iostream>
+#include <ostream>
 #include <stdexcept>
 
 namespace scrptm {
@@ -7,20 +9,19 @@ namespace scrptm {
                                const unsigned int index) : text(text), lemma(lemma), index(index) {
     }
 
-    const unsigned int TorahRawWord::getIndex() const {
+    unsigned int TorahRawWord::getIndex() const {
         return this->index;
     }
 
-    const std::string_view TorahRawWord::getLemma() const {
+    std::string_view TorahRawWord::getLemma() const {
         return this->lemma;
     }
 
-    const unsigned short TorahRawWord::getLemmaId() const {
-        //TODO: Implement
+    unsigned short TorahRawWord::getLemmaId() const {
         throw std::invalid_argument("Not implemented yet");
     }
 
-    const std::string_view TorahRawWord::getText() const {
+    std::string_view TorahRawWord::getText() const {
         return this->text;
     }
 }
