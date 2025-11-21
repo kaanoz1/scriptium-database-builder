@@ -13,9 +13,9 @@ namespace scrptm {
     public:
         TorahRawVerseOfWordFile(unsigned int index, std::vector<std::unique_ptr<const TorahRawWord> > words);
 
-        unsigned int getIndex() const;
+        [[nodiscard]] unsigned int getIndex() const;
 
-        const std::vector<std::unique_ptr<const TorahRawWord> > &getWords() const;
+        [[nodiscard]] const std::vector<std::unique_ptr<const TorahRawWord> > &getWords() const;
     };
 }
 

@@ -1,10 +1,12 @@
 #include "TorahVariationFile.h"
 
+#include <utility>
+
 namespace scrptm {
-    TorahVariationFile::TorahVariationFile(std::string_view sectionNameHebrew, std::string_view sectionTitleEnglish,
+    TorahVariationFile::TorahVariationFile(std::string sectionNameHebrew, std::string sectionTitleEnglish,
                                            std::vector<std::unique_ptr<const TorahRawChapter> >
-                                           chapters) : sectionNameHebrew(sectionNameHebrew),
-                                                       sectionTitleEnglish(sectionTitleEnglish),
+                                           chapters) : sectionNameHebrew(std::move(sectionNameHebrew)),
+                                                       sectionTitleEnglish(std::move(sectionTitleEnglish)),
                                                        chapters(std::move(chapters)) {
     }
 

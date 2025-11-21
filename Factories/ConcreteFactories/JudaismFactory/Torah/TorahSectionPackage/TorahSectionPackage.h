@@ -5,14 +5,16 @@
 
 namespace scrptm {
     class TorahSectionPackage {
-        const TorahVariationFile usualFile;
-        const TorahVariationFile simplifiedFile;
-        const TorahVariationFile noVowelFile;
-        const TorahSectionWordFile wordFile;
+        const std::unique_ptr<const TorahVariationFile> usualFile;
+        const std::unique_ptr<const TorahVariationFile> simplifiedFile;
+        const std::unique_ptr<const TorahVariationFile> noVowelFile;
+        const std::unique_ptr<const TorahSectionWordFile> wordFile;
 
     public:
-        TorahSectionPackage(TorahVariationFile variationFile, TorahVariationFile simplifiedFile,
-                            TorahVariationFile noVowelFile, TorahSectionWordFile wordFile);
+        TorahSectionPackage(std::unique_ptr<const TorahVariationFile> usualFile,
+                        std::unique_ptr<const TorahVariationFile> simplifiedFile,
+                        std::unique_ptr<const TorahVariationFile> noVowelFile,
+                        std::unique_ptr<const TorahSectionWordFile> wordFile);
 
         [[nodiscard]] const TorahVariationFile& getUsualFile() const;
         [[nodiscard]] const TorahVariationFile& getSimplifiedFile() const;

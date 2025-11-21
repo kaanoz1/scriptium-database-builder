@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 namespace scrptm {
-    TorahRawWord::TorahRawWord(const std::string_view text, const std::string_view lemma,
+    TorahRawWord::TorahRawWord(const std::string text, const std::string lemma,
                                const unsigned int index) : text(text), lemma(lemma), index(index) {
     }
 
