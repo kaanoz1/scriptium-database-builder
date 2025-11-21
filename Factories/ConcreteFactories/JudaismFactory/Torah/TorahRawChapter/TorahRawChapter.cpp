@@ -17,6 +17,6 @@ namespace scrptm {
 
 
     size_t TorahRawChapter::getVerseCount() const {
-        return this->verses.size();
+        return this->getVerses().size();
     }
 } // scrptm
