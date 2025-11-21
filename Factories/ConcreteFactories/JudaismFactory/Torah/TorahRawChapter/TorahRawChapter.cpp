@@ -14,4 +14,9 @@ namespace scrptm {
     const std::vector<std::unique_ptr<const TorahRawVerse> > &TorahRawChapter::getVerses() const {
         return this->verses;
     }
+
+
+    size_t TorahRawChapter::getVerseCount() const {
+        return this->verses.size();
+    }
 } // scrptm
