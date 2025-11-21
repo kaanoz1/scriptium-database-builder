@@ -11,18 +11,18 @@ namespace scrptm {
     }
 
     const TorahVariationFile &TorahSectionPackage::getUsualFile() const {
-        return *(this->usualFile);
+        return *this->usualFile;
     }
 
     const TorahVariationFile &TorahSectionPackage::getSimplifiedFile() const {
-        return *(this->simplifiedFile);
+        return *this->simplifiedFile;
     }
 
     const TorahVariationFile &TorahSectionPackage::getNoVowelFile() const {
-        return *(this->noVowelFile);
+        return *this->noVowelFile;
     }
 
     const TorahSectionWordFile &TorahSectionPackage::getWordFile() const {
-        return *(this->wordFile);
+        return *this->wordFile;
     }
 } // scrptm
