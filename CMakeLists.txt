@@ -87,6 +87,8 @@ add_executable(scriptium_database_builder main.cpp
         Factories/AbstractFactories/WordFactory/WordFactory.h
         Factories/AbstractFactories/VerseFactory/VerseFactory.cpp
         Factories/AbstractFactories/VerseFactory/VerseFactory.h
+        Factories/AbstractFactories/ChapterFactory/ChapterFactory.cpp
+        Factories/AbstractFactories/ChapterFactory/ChapterFactory.h
 )
 
 find_package(nlohmann_json REQUIRED)

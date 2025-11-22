@@ -9,6 +9,7 @@
 namespace scrptm {
     class WordFactory : public SingleFactory<Word> {
         std::vector<std::unique_ptr<RootFactory>> rootFactories;
+    public:
 
         virtual ~WordFactory() = default;
 
