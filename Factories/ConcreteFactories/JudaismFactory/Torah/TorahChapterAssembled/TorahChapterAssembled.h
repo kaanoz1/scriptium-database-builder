@@ -16,6 +16,8 @@ namespace scrptm {
         [[nodiscard]] unsigned char getIndex() const;
 
         [[nodiscard]] const std::vector<std::unique_ptr<TorahVerseAssembled> > &getVerses() const;
+
+        [[nodiscard]] std::vector<std::unique_ptr<TorahVerseAssembled> > giveVerses();
     };
 } // scrptm
 

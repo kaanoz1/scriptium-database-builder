@@ -14,4 +14,9 @@ namespace scrptm {
     const std::vector<std::unique_ptr<TorahVerseAssembled> > &TorahChapterAssembled::getVerses() const {
         return this->verses;
     }
+
+    std::vector<std::unique_ptr<TorahVerseAssembled> > TorahChapterAssembled::giveVerses() {
+        return std::move(this->verses);
+    }
+
 } // scrptm

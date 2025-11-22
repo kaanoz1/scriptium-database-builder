@@ -9,6 +9,7 @@
 
 namespace scrptm {
     class ChapterFactory: SingleFactory<Chapter> {
+    protected:
         std::vector<std::unique_ptr<VerseFactory>> verseFactories;
 
     public:
