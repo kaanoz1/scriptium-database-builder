@@ -70,7 +70,7 @@ namespace scrptm {
         return doc_ptr;
     }
 
-    std::unique_ptr<const TorahVariationFile> TorahSectionPackageReader::readVariationFile(
+    std::unique_ptr<TorahVariationFile> TorahSectionPackageReader::readVariationFile(
         std::unique_ptr<const json> &&json) {
         if (json == nullptr)
             throw std::runtime_error("JSON file is null");
@@ -82,7 +82,7 @@ namespace scrptm {
             std::string> > >();
 
 
-        std::vector<std::unique_ptr<const TorahRawChapter> > chapters{};
+        std::vector<std::unique_ptr<TorahRawChapter> > chapters{};
 
         chapters.reserve(text.size());
 
@@ -90,7 +90,7 @@ namespace scrptm {
             const std::vector<std::string> &chapter = text.at(i);
 
 
-            std::vector<std::unique_ptr<const TorahRawVerse> > verses;
+            std::vector<std::unique_ptr<TorahRawVerse> > verses;
             for (size_t j = 0; j < chapter.size(); ++j) {
                 const std::string &verse = chapter.at(j);
 
@@ -98,15 +98,15 @@ namespace scrptm {
             }
 
             chapters.emplace_back(
-                std::make_unique<const TorahRawChapter>(static_cast<unsigned char>(i), std::move(verses)));
+                std::make_unique<TorahRawChapter>(static_cast<unsigned char>(i), std::move(verses)));
         }
 
 
-        return std::make_unique<const
+        return std::make_unique<
             TorahVariationFile>(std::move(sectionNameInHebrew), std::move(sectionTitleEnglish), std::move(chapters));
     }
 
-    std::unique_ptr<const TorahSectionWordFile> TorahSectionPackageReader::readWordFile(
+    std::unique_ptr<TorahSectionWordFile> TorahSectionPackageReader::readWordFile(
         std::unique_ptr<const xml> &&xml) {
         if (!xml) {
             throw std::runtime_error("XML Document is null.");
@@ -132,7 +132,7 @@ namespace scrptm {
         }
 
 
-        std::vector<std::unique_ptr<const TorahRawChapterOfWordFile> > chapters{};
+        std::vector<std::unique_ptr<TorahRawChapterOfWordFile> > chapters{};
 
         const auto chapterNodes = div.children("chapter");
         const auto chapterCount = static_cast<size_t>(std::distance(chapterNodes.begin(), chapterNodes.end()));
@@ -140,7 +140,7 @@ namespace scrptm {
         for (size_t chapterIndex = 0; chapterIndex < chapterCount; ++chapterIndex) {
             pugi::xml_node chapter_node = *std::next(chapterNodes.begin(), static_cast<ptrdiff_t>(chapterIndex));
 
-            std::vector<std::unique_ptr<const TorahRawVerseOfWordFile> > verses{};
+            std::vector<std::unique_ptr<TorahRawVerseOfWordFile> > verses{};
 
             auto verseNodes = chapter_node.children("verse");
             const size_t verseCount = std::distance(verseNodes.begin(), verseNodes.end());
@@ -148,7 +148,7 @@ namespace scrptm {
             for (size_t verseIndex = 0; verseIndex < verseCount; ++verseIndex) {
                 pugi::xml_node verse_node = *std::next(verseNodes.begin(), static_cast<ptrdiff_t>(verseIndex));
 
-                std::vector<std::unique_ptr<const TorahRawWord> > words{};
+                std::vector<std::unique_ptr<TorahRawWord> > words{};
 
                 auto wordNodes = verse_node.children("w");
                 const size_t wordCount = std::distance(wordNodes.begin(), wordNodes.end());
@@ -156,26 +156,26 @@ namespace scrptm {
                 for (size_t wordIndex = 0; wordIndex < wordCount; ++wordIndex) {
                     pugi::xml_node word_node = *std::next(wordNodes.begin(), static_cast<ptrdiff_t>(wordIndex));
 
-                    words.emplace_back(std::make_unique<const TorahRawWord>(
+                    words.emplace_back(std::make_unique<TorahRawWord>(
                         word_node.text().get(),
                         word_node.attribute("lemma").as_string(),
                         static_cast<unsigned int>(wordIndex)
                     ));
                 }
 
-                verses.emplace_back(std::make_unique<const TorahRawVerseOfWordFile>(
+                verses.emplace_back(std::make_unique<TorahRawVerseOfWordFile>(
                     static_cast<unsigned int>(verseIndex),
                     std::move(words)
                 ));
             }
 
-            chapters.emplace_back(std::make_unique<const TorahRawChapterOfWordFile>(
+            chapters.emplace_back(std::make_unique<TorahRawChapterOfWordFile>(
                 static_cast<unsigned int>(chapterIndex),
                 std::move(verses)
             ));
         }
 
-        return std::make_unique<const TorahSectionWordFile>(std::move(chapters));
+        return std::make_unique<TorahSectionWordFile>(std::move(chapters));
     }
 
 
@@ -266,8 +266,8 @@ namespace scrptm {
 
 
     //TODO: Mark this function as const.
-    std::vector<std::unique_ptr<const TorahSectionPackage> > TorahSectionPackageReader::read() {
-        std::vector<std::unique_ptr<const TorahSectionPackage> > result;
+    std::vector<std::unique_ptr<TorahSectionPackage> > TorahSectionPackageReader::read() const {
+        std::vector<std::unique_ptr<TorahSectionPackage> > result;
 
 
         result.reserve(this->sectionCount);
@@ -288,17 +288,18 @@ namespace scrptm {
             std::unique_ptr<const json> noVowelFileJson = readJsonFile(noVowelJsonFilePath);
             std::unique_ptr<const xml> xmlFile = readXmlFile(wordFileXmlPath);
 
-            validateFileContent(*usualFileJson, *simplifiedFileJson, *noVowelFileJson, *xmlFile, static_cast<unsigned char>(i));
+            validateFileContent(*usualFileJson, *simplifiedFileJson, *noVowelFileJson, *xmlFile,
+                                static_cast<unsigned char>(i));
 
-            std::unique_ptr<const TorahVariationFile> usualFile = readVariationFile(std::move(usualFileJson));
-            std::unique_ptr<const TorahVariationFile> simplifiedFile = readVariationFile(
+            std::unique_ptr<TorahVariationFile> usualFile = readVariationFile(std::move(usualFileJson));
+            std::unique_ptr<TorahVariationFile> simplifiedFile = readVariationFile(
                 std::move(simplifiedFileJson));
-            std::unique_ptr<const TorahVariationFile> noVowelFile = readVariationFile(std::move(noVowelFileJson));
-            std::unique_ptr<const TorahSectionWordFile> wordFile = readWordFile(std::move(xmlFile));
+            std::unique_ptr<TorahVariationFile> noVowelFile = readVariationFile(std::move(noVowelFileJson));
+            std::unique_ptr<TorahSectionWordFile> wordFile = readWordFile(std::move(xmlFile));
 
 
             auto package =
-                    std::make_unique<const TorahSectionPackage>(
+                    std::make_unique<TorahSectionPackage>(
                         std::move(usualFile),
                         std::move(simplifiedFile),
                         std::move(noVowelFile),
