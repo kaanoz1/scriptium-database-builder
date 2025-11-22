@@ -65,8 +65,6 @@ add_executable(scriptium_database_builder main.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahVariationFile/TorahVariationFile.h
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionPackage/TorahSectionPackage.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionPackage/TorahSectionPackage.h
-        Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionPackage/TorahSectionPackage.cpp
-        Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionPackage/TorahSectionPackage.h
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionPackageReader/TorahSectionPackageReader.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionPackageReader/TorahSectionPackageReader.h
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionPackageValidator/TorahSectionPackageValidator.cpp
@@ -81,8 +79,6 @@ add_executable(scriptium_database_builder main.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionPackageAssembler/TorahSectionPackageAssembler.h
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionPackageManager/TorahSectionPackageManager.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahSectionPackageManager/TorahSectionPackageManager.h
-        Factories/ConcreteFactories/JudaismFactory/Torah/TorahFactory/TorahFactory.cpp
-        Factories/ConcreteFactories/JudaismFactory/Torah/TorahFactory/TorahFactory.h
         Factories/AbstractFactories/WordFactory/WordFactory.cpp
         Factories/AbstractFactories/WordFactory/WordFactory.h
         Factories/AbstractFactories/VerseFactory/VerseFactory.cpp
@@ -93,14 +89,16 @@ add_executable(scriptium_database_builder main.cpp
         Factories/AbstractFactories/SectionFactory/SectionFactory.h
         Factories/AbstractFactories/ScriptureFactory/ScriptureFactory.cpp
         Factories/AbstractFactories/ScriptureFactory/ScriptureFactory.h
-        Factories/ConcreteFactories/JudaismFactory/Torah/TorahFactory/TorahFactory.cpp
-        Factories/ConcreteFactories/JudaismFactory/Torah/TorahFactory/TorahFactory.h
         Factories/ConcreteFactories/JudaismFactory/Torah/Torah/Torah.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/Torah/Torah.h
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahRootRepository/TorahRootRepository.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahRootRepository/TorahRootRepository.h
+        Factories/ConcreteFactories/JudaismFactory/Torah/TorahRootFactory/TorahRootFactory.cpp
+        Factories/ConcreteFactories/JudaismFactory/Torah/TorahRootFactory/TorahRootFactory.h
 )
 
 find_package(nlohmann_json REQUIRED)
+find_package(Pugixml REQUIRED)
 
 target_link_libraries(scriptium_database_builder PRIVATE nlohmann_json::nlohmann_json)
+target_link_libraries(scriptium_database_builder PRIVATE pugixml)

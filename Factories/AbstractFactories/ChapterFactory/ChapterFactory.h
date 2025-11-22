@@ -12,9 +12,9 @@ namespace scrptm {
         std::vector<std::unique_ptr<VerseFactory>> verseFactories;
 
     public:
-        virtual ~ChapterFactory() = default;
+        ~ChapterFactory() override = default;
 
-         Chapter construct() const override = 0;
+         [[nodiscard]] std::unique_ptr<Chapter> construct() const override = 0;
     };
 } // scrptm
 

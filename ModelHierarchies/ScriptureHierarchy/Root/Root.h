@@ -10,7 +10,7 @@ namespace scrptm {
         const std::string own;
 
     public:
-        Root(const std::string latin, std::string own);
+        Root(std::string latin, std::string own);
 
         [[nodiscard]] const std::string_view getLatin() const;
 

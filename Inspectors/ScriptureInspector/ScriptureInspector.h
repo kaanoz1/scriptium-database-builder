@@ -30,14 +30,6 @@ namespace scrptm {
 
             std::cout << "Scripture meanings:\n";
 
-            std::ranges::for_each(scriptureMeanings, [](const std::reference_wrapper<const ScriptureMeaning> meaningRef) {
-                const ScriptureMeaning& meaning = meaningRef.get();
-                std::cout << "\t"
-                          << meaning.getLanguage().getLanguageEnglish()
-                          << ": "
-                          << meaning.getMeaning()
-                          << "\n";
-            });
 
 
             //TODO: Will be implemented

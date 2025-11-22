@@ -1,6 +1,14 @@
+#include <iostream>
+
+#include "Factories/ConcreteFactories/JudaismFactory/Torah/TorahRootFactory/TorahRootFactory.h"
+#include "Factories/ConcreteFactories/JudaismFactory/Torah/TorahRootRepository/TorahRootRepository.h"
 
 int main() {
-     int x = 21;
+    scrptm::TorahRootFactory rootFactory(1974);
 
-     return 0;
+    const auto root = rootFactory.construct();
+
+    std::cout << root->getOwn() << " "  << root->getLatin() << std::endl;
+
+    return 0;
 }

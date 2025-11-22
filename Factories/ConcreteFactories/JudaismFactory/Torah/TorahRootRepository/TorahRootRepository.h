@@ -10,7 +10,7 @@ namespace scrptm {
     using json = nlohmann::json;
 
     class TorahRootRepository {
-        const std::string sourceFilePath{"./data/torah/root/data.json"};
+        const std::string sourceFilePath{"/home/prag/CLionProjects/scriptium-database-builder/data/torah/rootRepository/data.json"};
         std::map<unsigned int, std::string> rootMap;
 
     private:
@@ -26,7 +26,7 @@ namespace scrptm {
         TorahRootRepository();
 
 
-        Root find(unsigned int) const;
+        [[nodiscard]] std::unique_ptr<Root> find(unsigned int) const;
     };
 } // scrptm
 

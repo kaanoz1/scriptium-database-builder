@@ -19,11 +19,11 @@ namespace scrptm {
         fillMap(source);
     }
 
-    Root TorahRootRepository::find(const unsigned int latinNumber) const {
+    std::unique_ptr<Root> TorahRootRepository::find(const unsigned int latinNumber) const {
         try {
             const auto &own = this->rootMap.at(latinNumber);
 
-            return Root(std::to_string(latinNumber), own);
+            return std::make_unique<Root>(std::to_string(latinNumber), own);
         } catch (const std::out_of_range &e) {
             const std::string full_msg = "Root string not found for number " + std::to_string(latinNumber) + ". Details: " + e
                                    .what();
@@ -53,48 +53,38 @@ namespace scrptm {
         return std::move(data["mapping"]);
     }
 
+
     void TorahRootRepository::fillMap(const json &source) {
         unsigned int rootInsertedCount = 0;
 
-        for (const auto &item: source) {
-            for (const auto &[key, value]: item.items()) {
-                auto mappingValue = value.get<std::string>();
-                unsigned int headerNumber = extractHeader(mappingValue);
+        for (const auto &[key, value] : source.items()) {
+            auto mappingValue = value.get<std::string>();
+            unsigned int headerNumber = extractHeader(mappingValue);
+            rootMap[headerNumber] = key;
 
-
-                Logger::LogInformation(std::format("The root ({}, {}) successfully inserted. Total fetched root: {}",
-                                                   key, headerNumber, ++rootInsertedCount));
-                rootMap[headerNumber] = key;
-            }
+            Logger::LogInformation(std::format("The root ({}\u200e, {}) successfully inserted. Total fetched root: {}",
+                                               key, headerNumber, ++rootInsertedCount));
         }
     }
 
     void TorahRootRepository::validateJson(const json &source) const {
-        if (!source.is_array()) {
-            std::string full_msg = "JSON root element must be an array, but found " + std::string(source.type_name());
+        if (!source.is_object()) {
+            const std::string full_msg = "JSON root element must be an object (map), but found " + std::string(source.type_name());
             Logger::LogFatal(full_msg);
             throw std::runtime_error("JSON Structure Invalid");
         }
-        for (const auto &item: source) {
-            if (!item.is_object()) {
-                const std::string full_msg = "Array elements must be objects.";
+
+
+        for (const auto &[key, value] : source.items()) {
+
+            if (!value.is_string()) {
+                const std::string full_msg =
+                    "Mapping value for key '" + key + "' must be a string (H{number}), but found type: " + std::string(value.type_name());
                 Logger::LogFatal(full_msg);
                 throw std::runtime_error("JSON Structure Invalid");
-            }
-            if (item.size() != 1) {
-                const std::string full_msg = "Each object in the mapping array must contain exactly one key-value pair.";
-                Logger::LogFatal(full_msg);
-                throw std::runtime_error("JSON Structure Invalid");
-            }
-            for (const auto &[key, value]: item.items()) {
-                if (!value.is_string()) {
-                    const std::string full_msg = "Mapping values must be strings, but key '" + key +
-                                           "' has a different type.";
-                    Logger::LogFatal(full_msg);
-                    throw std::runtime_error("JSON Structure Invalid");
-                }
             }
         }
+
     }
 
     unsigned int TorahRootRepository::extractHeader(const std::string &mappingValue) {

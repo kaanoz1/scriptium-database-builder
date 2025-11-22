@@ -4,10 +4,10 @@
 
 namespace scrptm {
     TorahSectionWordFile::TorahSectionWordFile(
-        std::vector<std::unique_ptr< TorahRawChapterOfWordFile> > chapters) : chapters(std::move(chapters)) {
+        std::vector<std::unique_ptr<TorahRawChapterOfWordFile> > chapters) : chapters(std::move(chapters)) {
     }
 
-    const std::vector<std::unique_ptr< TorahRawChapterOfWordFile> > &TorahSectionWordFile::getChapters() const {
+    const std::vector<std::unique_ptr<TorahRawChapterOfWordFile> > &TorahSectionWordFile::getChapters() const {
         return this->chapters;
     }
 
@@ -26,13 +26,9 @@ namespace scrptm {
 
     size_t TorahSectionWordFile::getVerseCount() const {
         size_t sum = 0;
-        for (const auto &chapter : this->getChapters())
+        for (const auto &chapter: this->getChapters())
             sum += chapter->getVerseCount();
 
         return sum;
     }
-
-
-
-    const
 } // scrptm
