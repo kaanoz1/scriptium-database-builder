@@ -21,6 +21,14 @@ namespace scrptm {
         return std::move(this->chapters);
     }
 
+    std::string TorahSectionAssembled::giveSectionTitleHebrew() {
+        return std::move(this->sectionNameHebrew);
+    }
+
+    std::string TorahSectionAssembled::giveSectionTitleInEnglish() {
+        return std::move(this->sectionTitleInEnglish);
+    }
+
 
     unsigned char TorahSectionAssembled::getSectionNumber() const {
         return this->sectionNumber;

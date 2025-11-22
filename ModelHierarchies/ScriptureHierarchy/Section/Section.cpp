@@ -1,13 +1,20 @@
-
 #include "Section.h"
 
+#include <algorithm>
+
 namespace scrptm {
-    Section::Section(unsigned short number, const std::string_view name,
-                     const std::pmr::vector<std::reference_wrapper<Chapter> > &chapters,
-                     const std::pmr::vector<std::reference_wrapper<SectionMeaning> > &meanings) : number(number),
-        name(name),
-        chapters(chapters),
-        meanings(meanings) {
+    Section::Section(unsigned short number, const std::string name,
+                     std::vector<std::unique_ptr<Chapter> > &&chapters,
+                     std::vector<std::unique_ptr<SectionMeaning> > &&meanings) : number(number),
+        name(std::move(name)), chapters(std::move(chapters)), meanings(std::move(meanings)) {
+    }
+
+    std::vector<std::unique_ptr<Chapter> > Section::giveChapters() {
+        return std::move(this->chapters);
+    }
+
+    std::vector<std::unique_ptr<SectionMeaning> > Section::giveMeanings() {
+        return std::move(this->meanings);
     }
 
 

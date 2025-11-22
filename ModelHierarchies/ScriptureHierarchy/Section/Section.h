@@ -1,4 +1,3 @@
-
 #ifndef SCRIPTIUM_DATABASE_BUILDER_SECTION_H
 #define SCRIPTIUM_DATABASE_BUILDER_SECTION_H
 #include <string_view>
@@ -10,23 +9,27 @@ namespace scrptm {
     class Section {
     private:
         const unsigned short number;
-        const std::string_view name;
-        const std::pmr::vector<std::reference_wrapper<Chapter> > &chapters;
-        const std::pmr::vector<std::reference_wrapper<SectionMeaning> > &meanings;
+        const std::string name;
+        std::vector<std::unique_ptr<Chapter> > chapters;
+        std::vector<std::unique_ptr<SectionMeaning> > meanings;
 
     public:
-        Section(unsigned short number, const std::string_view name,
-                const std::pmr::vector<std::reference_wrapper<Chapter> > &chapters,
-                const std::pmr::vector<std::reference_wrapper<SectionMeaning> > &meanings);
+        Section(unsigned short number, std::string name,
+                 std::vector<std::unique_ptr<Chapter> > &&chapters,
+                 std::vector<std::unique_ptr<SectionMeaning> > &&meanings);
 
 
         [[nodiscard]] const unsigned short getNumber() const;
 
         [[nodiscard]] const std::string_view getName() const;
 
-        [[nodiscard]] const std::pmr::vector<std::reference_wrapper<Chapter> > &getChapters() const;
+        [[nodiscard]] const std::vector<std::unique_ptr<Chapter> > &getChapters() const;
 
-        [[nodiscard]] const std::pmr::vector<std::reference_wrapper<SectionMeaning> > &getMeanings() const;
+        [[nodiscard]] const std::vector<std::unique_ptr<SectionMeaning> > &getMeanings() const;
+
+        [[nodiscard]] std::vector<std::unique_ptr<Chapter> > giveChapters();
+
+        [[nodiscard]] std::vector<std::unique_ptr<SectionMeaning> > giveMeanings();
     };
 }
 

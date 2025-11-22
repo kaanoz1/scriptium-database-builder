@@ -4,11 +4,13 @@
 
 #include "../../../ModelHierarchies/ScriptureHierarchy/Scripture/Scripture.h"
 #include "../../../ModelHierarchies/ScriptureHierarchy/Section/Section.h"
+#include "../ChapterFactory/ChapterFactory.h"
 #include "../Definitions/SingleFactory/SingleFactory.h"
 
 namespace scrptm {
     class SectionFactory : public SingleFactory<Section>{
-        std::vector<std::unique_ptr<SectionFactory>> sectionFactory;
+    protected:
+        std::vector<std::unique_ptr<ChapterFactory>> chapterFactories;
 
     public:
         ~SectionFactory() override = default;

@@ -9,8 +9,8 @@
 namespace scrptm {
     class TorahSectionAssembled {
         const unsigned char sectionNumber;
-        const std::string sectionNameHebrew;
-        const std::string sectionTitleInEnglish;
+        std::string sectionNameHebrew;
+        std::string sectionTitleInEnglish;
 
         std::vector<std::unique_ptr<TorahChapterAssembled> > chapters;
 
@@ -24,6 +24,10 @@ namespace scrptm {
         [[nodiscard]] std::string_view getSectionTitleHebrew() const;
 
         [[nodiscard]] std::string_view getSectionTitleInEnglish() const;
+
+        [[nodiscard]] std::string giveSectionTitleHebrew();
+
+        [[nodiscard]] std::string giveSectionTitleInEnglish();
 
         [[nodiscard]] const std::vector<std::unique_ptr<TorahChapterAssembled> > &getChapters() const;
 
