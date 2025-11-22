@@ -12,8 +12,8 @@ namespace scrptm {
         const std::string text;
         const std::string textSimplified;
         const std::string textWithoutVowel;
-         std::vector<std::unique_ptr<Word> > &&words;
-         std::vector<std::unique_ptr<Transliteration> > &&transliterations;
+        std::vector<std::unique_ptr<Word> > &&words;
+        std::vector<std::unique_ptr<Transliteration> > &&transliterations;
 
     public:
         Verse(unsigned short number, std::string text,
@@ -30,6 +30,8 @@ namespace scrptm {
         [[nodiscard]] const std::string_view getTextSimplified() const;
 
         [[nodiscard]] const std::vector<std::unique_ptr<Word> > &getWords() const;
+
+        [[nodiscard]] size_t getWordCount() const;
 
         [[nodiscard]] const std::vector<std::unique_ptr<Transliteration> > &getTransliterations() const;
     };

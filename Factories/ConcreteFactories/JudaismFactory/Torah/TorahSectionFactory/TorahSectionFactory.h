@@ -11,7 +11,7 @@ namespace scrptm {
         explicit TorahSectionFactory(std::unique_ptr<TorahSectionAssembled> sectionAssembled);
 
 
-        std::unique_ptr<Section> construct() const override;
+        [[nodiscard]] std::unique_ptr<Section> construct() const override;
     };
 } // scrptm
 

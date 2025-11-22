@@ -9,14 +9,6 @@ namespace scrptm {
         name(std::move(name)), chapters(std::move(chapters)), meanings(std::move(meanings)) {
     }
 
-    std::vector<std::unique_ptr<Chapter> > Section::giveChapters() {
-        return std::move(this->chapters);
-    }
-
-    std::vector<std::unique_ptr<SectionMeaning> > Section::giveMeanings() {
-        return std::move(this->meanings);
-    }
-
     std::string_view Section::getName() const {
         return this->name;
     }
@@ -28,6 +20,21 @@ namespace scrptm {
     const std::vector<std::unique_ptr<Chapter> > &Section::getChapters() const {
         return this->chapters;
     }
+
+    size_t Section::getChapterCount() const {
+        return this->getChapters().size();
+    }
+
+    size_t Section::getVerseCount() const {
+        size_t sum = 0;
+
+        for (const auto &chapter: this->getChapters())
+            sum += chapter->getVerseCount();
+
+
+        return sum;
+    }
+
 
     const std::vector<std::unique_ptr<SectionMeaning> > &Section::getMeanings() const {
         return this->meanings;

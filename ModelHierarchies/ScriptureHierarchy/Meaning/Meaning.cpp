@@ -2,11 +2,11 @@
 #include "Meaning.h"
 
 namespace scrptm {
-    Meaning::Meaning(std::string_view meaning, const Language &language) : meaning(meaning), language(language) {
+    Meaning::Meaning(std::string meaning, const Language &language) : meaning(meaning), language(language) {
     }
 
 
-    const std::string_view Meaning::getMeaning() const {
+     std::string_view Meaning::getMeaning() const {
         return this->meaning;
     }
 

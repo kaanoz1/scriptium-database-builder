@@ -6,13 +6,13 @@
 
 namespace scrptm {
     class Meaning {
-        const std::string_view meaning;
+        const std::string meaning;
         const Language& language;
 
     public:
-        Meaning(std::string_view meaning, const Language &language);
+        Meaning(std::string meaning, const Language &language);
 
-        [[nodiscard]] const std::string_view getMeaning() const;
+        [[nodiscard]] std::string_view getMeaning() const;
         [[nodiscard]] const Language& getLanguage() const;
     };
 }

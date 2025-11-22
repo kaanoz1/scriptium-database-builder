@@ -1,7 +1,7 @@
-
 #ifndef SCRIPTIUM_DATABASE_BUILDER_SCRIPTUREINSPECTOR_H
 #define SCRIPTIUM_DATABASE_BUILDER_SCRIPTUREINSPECTOR_H
 
+#include <format>
 #include <memory>
 #include <tabulate/table.hpp>
 #include "../../ModelHierarchies/ScriptureHierarchy/Scripture/Scripture.h"
@@ -9,32 +9,23 @@
 
 namespace scrptm {
     class ScriptureInspector {
-        const std::shared_ptr<Scripture> scripturePtr;
+        unsigned char getUserInput(unsigned char max_value, char &selection_char) const;
+
+
+        void runChapterSelection(const Section &section) const;
+        void printChapterDetails(const Chapter &chapter) const;
+        void runSectionSelection(
+            const std::vector<std::unique_ptr<Section> > &sections) const;
+
+        void printSections(const std::vector<std::unique_ptr<Section> > &sections) const;
+
+        void printSection(const std::unique_ptr<Section> &section) const;
 
     public:
-        explicit ScriptureInspector(const std::shared_ptr<Scripture> &scripture)
-            : scripturePtr(scripture) {
-        }
-
-        void inspect() const {
-            tabulate::Table scriptureTable;
-
-            if (scripturePtr == nullptr) {
-                Logger::LogFatal("Scripture ref passed in ScriptureInspector is null.");
-                throw std::invalid_argument("The scripture is null");
-            }
-
-            std::cout << "Scripture name: " << scripturePtr->getName() << std::endl;
-
-            auto& scriptureMeanings =  scripturePtr->getMeanings();
-
-            std::cout << "Scripture meanings:\n";
+        ScriptureInspector();
 
 
-
-            //TODO: Will be implemented
-
-        }
+        void inspect(const Scripture &scripture) const;
     };
 }
 

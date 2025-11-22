@@ -33,7 +33,7 @@ namespace scrptm {
 
         const std::string sectionNameHebrew = usualFile->giveTitle();
         const std::string sectionNameEnglish = usualFile->giveTitleEnglish();
-
+        Logger::LogDebug(std::format("Section name: {}", sectionNameEnglish));
 
         if (!(usualFileChapterLength == simplifiedFileChapterLength && simplifiedFileChapterLength ==
               noVowelFileChapterLength && noVowelFileChapterLength == wordFileChapterLength)) {

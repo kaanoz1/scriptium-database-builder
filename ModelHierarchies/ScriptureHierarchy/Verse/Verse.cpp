@@ -16,6 +16,10 @@ namespace scrptm {
         return this->number;
     }
 
+    size_t Verse::getWordCount() const {
+        return this->getWords().size();
+    }
+
 
     const std::string_view Verse::getText() const {
         return this->text;

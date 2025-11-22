@@ -27,7 +27,7 @@ namespace scrptm {
 
         [[nodiscard]] const std::vector<std::unique_ptr<ChapterMeaning> > &getMeanings() const;
 
-        [[nodiscard]] std::vector<std::unique_ptr<Verse> > giveVerses();
+        [[nodiscard]] size_t getVerseCount() const;
     };
 }
 

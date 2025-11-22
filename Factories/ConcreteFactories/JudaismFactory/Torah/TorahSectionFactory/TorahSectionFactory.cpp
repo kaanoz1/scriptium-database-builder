@@ -27,7 +27,7 @@ namespace scrptm {
     std::unique_ptr<Section> TorahSectionFactory::construct() const {
         auto number = this->sectionAssembled->getSectionNumber();
         auto hebrewName = this->sectionAssembled->giveSectionTitleHebrew();
-        auto englishMeaning = this->sectionAssembled->giveSectionTitleHebrew();
+        auto englishMeaning = this->sectionAssembled->giveSectionTitleInEnglish();
         std::vector<std::unique_ptr<SectionMeaning> > meanings{};
         meanings.push_back(std::make_unique<SectionMeaning>(englishMeaning, constants::General::Language::englishRef));
 

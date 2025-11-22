@@ -25,11 +25,10 @@ namespace scrptm {
 
         [[nodiscard]] const std::vector<std::unique_ptr<Chapter> > &getChapters() const;
 
+        [[nodiscard]] size_t getChapterCount() const;
+        [[nodiscard]] size_t getVerseCount() const;
+
         [[nodiscard]] const std::vector<std::unique_ptr<SectionMeaning> > &getMeanings() const;
-
-        [[nodiscard]] std::vector<std::unique_ptr<Chapter> > giveChapters();
-
-        [[nodiscard]] std::vector<std::unique_ptr<SectionMeaning> > giveMeanings();
     };
 }
 

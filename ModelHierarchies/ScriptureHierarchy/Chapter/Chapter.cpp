@@ -9,11 +9,11 @@ namespace scrptm {
     }
 
 
-     std::string_view scrptm::Chapter::getName() const {
+    std::string_view scrptm::Chapter::getName() const {
         return this->name;
     }
 
-     unsigned short scrptm::Chapter::getNumber() const {
+    unsigned short scrptm::Chapter::getNumber() const {
         return this->number;
     }
 
@@ -25,7 +25,7 @@ namespace scrptm {
         return this->meanings;
     }
 
-    std::vector<std::unique_ptr<Verse> > Chapter::giveVerses() {
-        return std::move(this->verses);
+    size_t Chapter::getVerseCount() const {
+        return this->getVerses().size();
     }
 }
