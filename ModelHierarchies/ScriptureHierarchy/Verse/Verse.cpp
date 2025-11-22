@@ -29,11 +29,11 @@ namespace scrptm {
         return this->textWithoutVowel;
     }
 
-    const std::pmr::vector<std::reference_wrapper<Transliteration> > &Verse::getTransliterations() const {
+    const std::vector<std::unique_ptr<Transliteration> > &Verse::getTransliterations() const {
         return this->transliterations;
     }
 
-    const std::pmr::vector<std::reference_wrapper<Word> > &Verse::getWords() const {
+    const std::vector<std::unique_ptr<Word> > &Verse::getWords() const {
         return this->words;
     }
 }

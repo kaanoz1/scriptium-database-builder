@@ -24,6 +24,7 @@ namespace scrptm {
         std::unique_ptr<TorahVariationFile> noVowelFile = sectionPackage->giveNoVowelVariationFile();
         std::unique_ptr<TorahSectionWordFile> wordFile = sectionPackage->giveWordFile();
 
+
         size_t usualFileChapterLength = usualFile->getChaptersCount();
         size_t simplifiedFileChapterLength = simplifiedFile->getChaptersCount();
         size_t noVowelFileChapterLength = noVowelFile->getChaptersCount();
@@ -32,6 +33,7 @@ namespace scrptm {
 
         const std::string sectionNameHebrew = usualFile->giveTitle();
         const std::string sectionNameEnglish = usualFile->giveTitleEnglish();
+
 
         if (!(usualFileChapterLength == simplifiedFileChapterLength && simplifiedFileChapterLength ==
               noVowelFileChapterLength && noVowelFileChapterLength == wordFileChapterLength)) {
@@ -52,10 +54,11 @@ namespace scrptm {
 
 
             if (!(usualFileVerseLengthAtChapterI == simplifiedFileVerseLengthAtChapterI &&
-                  simplifiedFileVerseLengthAtChapterI == noVowelFileChapterLength && noVowelFileVerseLengthAtChapterI ==
-                  wordFileChapterLength)) {
+                  simplifiedFileVerseLengthAtChapterI == noVowelFileVerseLengthAtChapterI &&
+                  noVowelFileVerseLengthAtChapterI <= //TODO: Amend this.
+                  wordFileVerseLengthAtChapterI)) {
                 const std::string formattedErrorMessage = std::format(
-                    "Assembly error: Chapter {}'th of Section ({},{},{}) has not equal lenghts of verses. Usual file verse length: {}. SimplifiedFile verse length: {}. NoVowel verse length: {}. Word file verse length: {}."
+                    "Assembly error: Chapter {}'th of Section ({}, {}, {}) has not equal lengths of verses. Usual file verse length: {}. SimplifiedFile verse length: {}. NoVowel verse length: {}. Word file verse length: {}."
                     , i + 1, sectionNumber, sectionNameHebrew, sectionNameEnglish, usualFileVerseLengthAtChapterI,
                     simplifiedFileVerseLengthAtChapterI, noVowelFileVerseLengthAtChapterI,
                     wordFileVerseLengthAtChapterI);
@@ -68,8 +71,8 @@ namespace scrptm {
 
 
         std::vector<std::unique_ptr<TorahChapterAssembled> > chaptersAssembled{};
-
         size_t chapterCount = usualFileChapterLength;
+
 
         chaptersAssembled.reserve(chapterCount);
 
@@ -80,7 +83,7 @@ namespace scrptm {
             auto wordFileChapter = wordFile->giveChapterAtIndex(i);
 
 
-            size_t verseCount = usualFile->getVerseCountAtChapter(i);
+            size_t verseCount = usualChapter->getVerseCount();
             std::vector<std::unique_ptr<TorahVerseAssembled> > verses{};
             verses.reserve(verseCount);
             for (size_t j = 0; j < verseCount; j++) {
@@ -93,13 +96,13 @@ namespace scrptm {
                 auto verseAssembled = std::make_unique<TorahVerseAssembled>(
                     j, std::move(usualVerse), std::move(simplifiedVerse), std::move(noVowelVerse),
                     std::move(wordsOfVerse));
-                verses.emplace_back(std::move(verseAssembled));
+                verses.push_back(std::move(verseAssembled));
             }
 
             auto torahChapterAssembled = std::make_unique<TorahChapterAssembled>(
                 i, std::move(verses));
 
-            chaptersAssembled.emplace_back(std::move(torahChapterAssembled));
+            chaptersAssembled.push_back(std::move(torahChapterAssembled));
         }
 
 
@@ -112,8 +115,10 @@ namespace scrptm {
         std::vector<std::unique_ptr<TorahSectionAssembled> > assembled{};
 
         for (size_t i = 0; i < packages.size(); i++) {
-            std::unique_ptr<TorahSectionPackage> package = std::move(packages.at(i));
-            std::unique_ptr assembledPackage{this->assembly(i, std::move(package))};
+            std::unique_ptr<TorahSectionAssembled> assembledPackage = this->assembly(i, std::move(packages.at(i)));
+
+
+            Logger::LogDebug(std::format("Section {} has been assembled.", i + 1));
             assembled.push_back(std::move(assembledPackage));
         }
 

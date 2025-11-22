@@ -4,9 +4,12 @@
 
 namespace scrptm {
     class TorahRawWord {
-         std::string text;
-         std::string lemma;
-         unsigned int index;
+        std::string text;
+        std::string lemma;
+        unsigned int index;
+        unsigned int lemmaId;
+
+        unsigned int calculateLemmaId() const;
 
     public:
         TorahRawWord(std::string text, std::string lemma,
@@ -15,6 +18,8 @@ namespace scrptm {
         [[nodiscard]] std::string_view getText() const;
 
         [[nodiscard]] std::string_view getLemma() const;
+
+        [[nodiscard]] std::string copyLemma() const;
 
         [[nodiscard]] unsigned int getIndex() const;
 

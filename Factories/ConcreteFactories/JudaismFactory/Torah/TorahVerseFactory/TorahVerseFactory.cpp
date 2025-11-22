@@ -1,17 +1,25 @@
 #include "TorahVerseFactory.h"
 
 #include <algorithm>
+#include <format>
 
 #include "../TorahWordFactory/TorahWordFactory.h"
+#include "../../../../../Utils/Logger/Logger.h"
 
 namespace scrptm {
     TorahVerseFactory::TorahVerseFactory(std::unique_ptr<TorahVerseAssembled> verseAssembled) : verseAssembled(
         std::move(verseAssembled)) {
-        std::vector<std::unique_ptr<TorahRawWord> > words = verseAssembled->giveWords();
+        std::vector<std::unique_ptr<TorahRawWord> > words = this->verseAssembled->giveWords();
 
 
-        for (size_t i = 0; i < words.size(); ++i)
+        for (size_t i = 0; i < words.size(); ++i) {
+            Logger::LogDebug(std::format("Word factory {} are set", i + 1));
+
             this->wordFactories.push_back(std::make_unique<TorahWordFactory>(std::move(words.at(i))));
+        }
+
+            Logger::LogDebug(std::format("Word factories are set"));
+
     }
 
     std::unique_ptr<Verse> TorahVerseFactory::construct() const {

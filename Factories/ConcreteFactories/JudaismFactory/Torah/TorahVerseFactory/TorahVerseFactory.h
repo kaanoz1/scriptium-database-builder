@@ -5,6 +5,8 @@
 #include "../../../../AbstractFactories/VerseFactory/VerseFactory.h"
 #include "../TorahVerseAssembled/TorahVerseAssembled.h"
 
+
+
 namespace scrptm {
     class TorahVerseFactory final : public VerseFactory{
         std::unique_ptr<TorahVerseAssembled> verseAssembled;

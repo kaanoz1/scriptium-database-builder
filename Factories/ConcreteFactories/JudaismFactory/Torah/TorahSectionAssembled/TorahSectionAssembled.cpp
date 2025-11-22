@@ -1,6 +1,9 @@
 #include "TorahSectionAssembled.h"
 
 #include <algorithm>
+#include <format>
+
+#include "../../../../../Utils/Logger/Logger.h"
 
 namespace scrptm {
     TorahSectionAssembled::TorahSectionAssembled(const unsigned char sectionNumber, std::string sectionNameHebrew,
@@ -18,6 +21,9 @@ namespace scrptm {
     }
 
     std::vector<std::unique_ptr<TorahChapterAssembled> > TorahSectionAssembled::giveChapters() {
+        Logger::LogDebug("Is there anybody?");
+        Logger::LogDebug(std::format("Length of chapter is {}", this->chapters.size()));
+
         return std::move(this->chapters);
     }
 

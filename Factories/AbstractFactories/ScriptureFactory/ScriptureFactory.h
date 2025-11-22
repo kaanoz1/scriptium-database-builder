@@ -8,12 +8,13 @@
 
 namespace scrptm {
     class ScriptureFactory : SingleFactory<Scripture> {
+    protected:
         std::vector<std::unique_ptr<SectionFactory>> sectionFactory;
 
     public:
         ~ScriptureFactory() override = default;
 
-        [[nodiscard]] std::unique_ptr<Scripture> construct() const override;
+        [[nodiscard]] std::unique_ptr<Scripture> construct() const override = 0;
 
     };
 } // scrptm

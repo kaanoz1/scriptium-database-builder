@@ -15,13 +15,13 @@ namespace scrptm {
 
     public:
         Section(unsigned short number, std::string name,
-                 std::vector<std::unique_ptr<Chapter> > &&chapters,
-                 std::vector<std::unique_ptr<SectionMeaning> > &&meanings);
+                std::vector<std::unique_ptr<Chapter> > &&chapters,
+                std::vector<std::unique_ptr<SectionMeaning> > &&meanings);
 
 
-        [[nodiscard]] const unsigned short getNumber() const;
+        [[nodiscard]] unsigned short getNumber() const;
 
-        [[nodiscard]] const std::string_view getName() const;
+        [[nodiscard]] std::string_view getName() const;
 
         [[nodiscard]] const std::vector<std::unique_ptr<Chapter> > &getChapters() const;
 

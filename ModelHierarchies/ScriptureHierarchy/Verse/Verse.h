@@ -29,9 +29,9 @@ namespace scrptm {
 
         [[nodiscard]] const std::string_view getTextSimplified() const;
 
-        [[nodiscard]] const std::pmr::vector<std::reference_wrapper<Word> > &getWords() const;
+        [[nodiscard]] const std::vector<std::unique_ptr<Word> > &getWords() const;
 
-        [[nodiscard]] const std::pmr::vector<std::reference_wrapper<Transliteration> > &getTransliterations() const;
+        [[nodiscard]] const std::vector<std::unique_ptr<Transliteration> > &getTransliterations() const;
     };
 }
 

@@ -311,6 +311,7 @@ namespace scrptm {
             std::unique_ptr<TorahVariationFile> noVowelFile = readVariationFile(std::move(noVowelFileJson));
             std::unique_ptr<TorahSectionWordFile> wordFile = readWordFile(std::move(xmlFile));
 
+            Logger::LogDebug(std::format("Section {} package is created", i));
 
             auto package =
                     std::make_unique<TorahSectionPackage>(
@@ -322,6 +323,6 @@ namespace scrptm {
 
             result.emplace_back(std::move(package));
         }
-        return result;
+        return std::move(result);
     }
 } // scrptm
