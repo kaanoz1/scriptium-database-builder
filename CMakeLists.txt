@@ -97,6 +97,8 @@ add_executable(scriptium_database_builder main.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahFactory/TorahFactory.h
         Factories/ConcreteFactories/JudaismFactory/Torah/Torah/Torah.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/Torah/Torah.h
+        Factories/ConcreteFactories/JudaismFactory/Torah/TorahRootRepository/TorahRootRepository.cpp
+        Factories/ConcreteFactories/JudaismFactory/Torah/TorahRootRepository/TorahRootRepository.h
 )
 
 find_package(nlohmann_json REQUIRED)
