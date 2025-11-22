@@ -1,5 +1,6 @@
 #include "TorahRawWord.h"
 
+#include <algorithm>
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
@@ -17,11 +18,15 @@ namespace scrptm {
         return this->lemma;
     }
 
-    unsigned short TorahRawWord::getLemmaId() const {
+    unsigned int TorahRawWord::getLemmaId() const {
         throw std::invalid_argument("Not implemented yet");
     }
 
     std::string_view TorahRawWord::getText() const {
         return this->text;
+    }
+
+    std::string TorahRawWord::giveText() {
+        return std::move(this->text);
     }
 }

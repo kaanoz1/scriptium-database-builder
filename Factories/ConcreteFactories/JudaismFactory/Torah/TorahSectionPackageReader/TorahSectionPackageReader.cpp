@@ -41,6 +41,11 @@ namespace scrptm {
             throw;
         }
 
+        Logger::LogInformation(std::format("The file is successfully read. File path: .../{}/{}",
+                                           filePath.parent_path().filename().string(),
+                                           filePath.filename().string()));
+
+
         return j_ptr;
     }
 
@@ -67,6 +72,10 @@ namespace scrptm {
             Logger::LogFatal(errorMsg);
             throw;
         }
+
+        Logger::LogInformation(std::format("The file is successfully read. File path: .../{}/{}",
+                                           filePath.parent_path().filename().string(),
+                                           filePath.filename().string()));
         return doc_ptr;
     }
 
@@ -101,7 +110,7 @@ namespace scrptm {
                 std::make_unique<TorahRawChapter>(static_cast<unsigned char>(i), std::move(verses)));
         }
 
-
+        Logger::LogInformation(std::format("TorahVariationFile is constructed!"));
         return std::make_unique<
             TorahVariationFile>(std::move(sectionNameInHebrew), std::move(sectionTitleEnglish), std::move(chapters));
     }
@@ -175,6 +184,8 @@ namespace scrptm {
             ));
         }
 
+
+        Logger::LogInformation(std::format("TorahSectionWordFile constructed!"));
         return std::make_unique<TorahSectionWordFile>(std::move(chapters));
     }
 
@@ -202,6 +213,7 @@ namespace scrptm {
                     }
                 }
             }
+            Logger::LogInformation(std::format("JSON file validated. File name: {}", fileName));
         } catch (const json::out_of_range &e) {
             const std::string errorMsg = std::format("FATAL: JSON structure error in {}. Required field missing: {}",
                                                      fileName, e.what());
@@ -246,6 +258,8 @@ namespace scrptm {
                     }
                 }
             }
+            Logger::LogInformation(std::format("XML file validated. File name: {}",
+                                               std::to_string(sectionPackageNumber) + ".xml"));
         } catch (const std::exception &e) {
             const std::string errorMsg = std::format("FATAL: Unexpected error during XML validation for {}: {}",
                                                      sectionPackageNumber, e.what());

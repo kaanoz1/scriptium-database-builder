@@ -21,9 +21,9 @@ namespace scrptm {
 
     std::unique_ptr<Root> TorahRootRepository::find(const unsigned int latinNumber) const {
         try {
-            const auto &own = this->rootMap.at(latinNumber);
+            const auto own = this->rootMap.at(latinNumber);
 
-            return std::make_unique<Root>(std::to_string(latinNumber), own);
+            return std::make_unique<Root>(std::to_string(latinNumber), std::move(own));
         } catch (const std::out_of_range &e) {
             const std::string full_msg = "Root string not found for number " + std::to_string(latinNumber) + ". Details: " + e
                                    .what();

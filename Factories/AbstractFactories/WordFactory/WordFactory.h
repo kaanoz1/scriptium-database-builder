@@ -8,11 +8,14 @@
 
 namespace scrptm {
     class WordFactory : public SingleFactory<Word> {
+    protected:
         std::vector<std::unique_ptr<RootFactory>> rootFactories;
     public:
         ~WordFactory() override = default;
 
-        [[nodiscard]] std::unique_ptr<Word> construct() const override;
+        WordFactory();
+
+        [[nodiscard]] std::unique_ptr<Word> construct() const override = 0;
     };
 } // scrptm
 
