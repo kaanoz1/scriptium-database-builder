@@ -1,28 +1,32 @@
 #include "TorahSectionPackage.h"
 
+#include <algorithm>
+
 namespace scrptm {
-    TorahSectionPackage::TorahSectionPackage(std::unique_ptr<const TorahVariationFile> usualFile,
-                        std::unique_ptr<const TorahVariationFile> simplifiedFile,
-                        std::unique_ptr<const TorahVariationFile> noVowelFile,
-                        std::unique_ptr<const TorahSectionWordFile> wordFile) : usualFile(std::move(usualFile)),
-                                                                              simplifiedFile(std::move(simplifiedFile)),
-                                                                              noVowelFile(std::move(noVowelFile)),
-                                                                              wordFile(std::move(wordFile)) {
+    TorahSectionPackage::TorahSectionPackage(std::unique_ptr<TorahVariationFile> usualFile,
+                                             std::unique_ptr<TorahVariationFile> simplifiedFile,
+                                             std::unique_ptr<TorahVariationFile> noVowelFile,
+                                             std::unique_ptr<TorahSectionWordFile> wordFile) : usualFile(
+            std::move(usualFile)),
+        simplifiedFile(std::move(simplifiedFile)),
+        noVowelFile(std::move(noVowelFile)),
+        wordFile(std::move(wordFile)) {
     }
 
-    const TorahVariationFile &TorahSectionPackage::getUsualFile() const {
-        return *this->usualFile;
+
+    std::unique_ptr<TorahVariationFile> TorahSectionPackage::giveUsualVariationFile() {
+        return std::move(this->usualFile);
     }
 
-    const TorahVariationFile &TorahSectionPackage::getSimplifiedFile() const {
-        return *this->simplifiedFile;
+    std::unique_ptr<TorahVariationFile> TorahSectionPackage::giveSimplifiedVariationFile() {
+        return std::move(this->simplifiedFile);
     }
 
-    const TorahVariationFile &TorahSectionPackage::getNoVowelFile() const {
-        return *this->noVowelFile;
+    std::unique_ptr<TorahVariationFile> TorahSectionPackage::giveNoVowelVariationFile() {
+        return std::move(this->noVowelFile);
     }
 
-    const TorahSectionWordFile &TorahSectionPackage::getWordFile() const {
-        return *this->wordFile;
+    std::unique_ptr<TorahSectionWordFile> TorahSectionPackage::giveWordFile() {
+        return std::move(this->wordFile);
     }
 } // scrptm

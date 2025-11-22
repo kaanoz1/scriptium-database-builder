@@ -8,14 +8,15 @@
 namespace scrptm {
     class TorahRawVerseOfWordFile {
         const unsigned int index;
-        const std::vector<std::unique_ptr<const TorahRawWord> > words;
+         std::vector<std::unique_ptr< TorahRawWord> > words;
 
     public:
-        TorahRawVerseOfWordFile(unsigned int index, std::vector<std::unique_ptr<const TorahRawWord> > words);
+        TorahRawVerseOfWordFile(unsigned int index, std::vector<std::unique_ptr< TorahRawWord> > words);
 
         [[nodiscard]] unsigned int getIndex() const;
 
-        [[nodiscard]] const std::vector<std::unique_ptr<const TorahRawWord> > &getWords() const;
+        [[nodiscard]] const std::vector<std::unique_ptr< TorahRawWord> > &getWords() const;
+        [[nodiscard]]  std::vector<std::unique_ptr< TorahRawWord> > giveWords();
     };
 }
 

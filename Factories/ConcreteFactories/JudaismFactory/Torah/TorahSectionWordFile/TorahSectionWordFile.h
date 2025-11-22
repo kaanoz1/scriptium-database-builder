@@ -7,12 +7,20 @@
 
 namespace scrptm {
     class TorahSectionWordFile {
-        const std::vector<std::unique_ptr<const TorahRawChapterOfWordFile>> chapters;
+        std::vector<std::unique_ptr<TorahRawChapterOfWordFile> > chapters;
 
     public:
-        explicit TorahSectionWordFile(std::vector<std::unique_ptr<const TorahRawChapterOfWordFile>> chapters);
+        explicit TorahSectionWordFile(std::vector<std::unique_ptr< TorahRawChapterOfWordFile> > chapters);
 
-        [[nodiscard]] const std::vector<std::unique_ptr<const TorahRawChapterOfWordFile>>& getChapters() const;
+        [[nodiscard]] const std::vector<std::unique_ptr< TorahRawChapterOfWordFile> > &getChapters() const;
+
+        [[nodiscard]] std::unique_ptr<TorahRawChapterOfWordFile> giveChapterAtIndex(size_t index);
+
+        [[nodiscard]] size_t getChapterCount() const;
+
+        [[nodiscard]] size_t getVerseCountAtChapter(size_t chapterIndex) const;
+
+        [[nodiscard]] size_t getVerseCount() const;
     };
 } // scrptm
 

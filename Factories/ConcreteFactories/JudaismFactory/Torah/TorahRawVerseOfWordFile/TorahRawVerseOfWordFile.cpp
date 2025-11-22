@@ -1,8 +1,10 @@
 #include "TorahRawVerseOfWordFile.h"
 
+#include <algorithm>
+
 namespace scrptm {
     TorahRawVerseOfWordFile::TorahRawVerseOfWordFile(const unsigned int index,
-                                                     std::vector<std::unique_ptr<const TorahRawWord> > words) : index(
+                                                     std::vector<std::unique_ptr<TorahRawWord> > words) : index(
             index), words(std::move(words)) {
     }
 
@@ -10,7 +12,12 @@ namespace scrptm {
         return this->index;
     }
 
-    const std::vector<std::unique_ptr<const TorahRawWord> > &TorahRawVerseOfWordFile::getWords() const {
+
+    const std::vector<std::unique_ptr<TorahRawWord> > &TorahRawVerseOfWordFile::getWords() const {
         return this->words;
+    }
+
+    std::vector<std::unique_ptr<TorahRawWord> > TorahRawVerseOfWordFile::giveWords() {
+        return std::move(this->words);
     }
 }

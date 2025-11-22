@@ -8,19 +8,25 @@
 
 namespace scrptm {
     class TorahVariationFile {
-        const std::string sectionNameHebrew;
-        const std::string sectionTitleEnglish;
-
-        const std::vector<std::unique_ptr<const TorahRawChapter>> chapters;
+        std::string sectionNameHebrew;
+        std::string sectionTitleEnglish;
+        std::vector<std::unique_ptr<TorahRawChapter>> chapters;
 
     public:
-        TorahVariationFile(std::string sectionNameHebrew, std::string sectionTitleEnglish, std::vector<std::unique_ptr<const TorahRawChapter>> chapters);
+        TorahVariationFile(std::string sectionNameHebrew, std::string sectionTitleEnglish, std::vector<std::unique_ptr<TorahRawChapter>> chapters);
 
         [[nodiscard]] std::string_view getTitle() const;
         [[nodiscard]] std::string_view getTitleEnglish() const;
-        [[nodiscard]] const std::vector<std::unique_ptr<const TorahRawChapter>> &getChapters() const;
+
+        [[nodiscard]] std::string giveTitle();
+        [[nodiscard]] std::string giveTitleEnglish();
+
+        [[nodiscard]] const std::vector<std::unique_ptr<TorahRawChapter>> &getChapters() const;
+
+        [[nodiscard]] std::unique_ptr<TorahRawChapter> giveChapterAtIndex(size_t index);
 
         [[nodiscard]] size_t getChaptersCount() const;
+        [[nodiscard]] size_t getVerseCountAtChapter(size_t chapterIndex) const;
         [[nodiscard]] size_t getVerseCount() const;
     };
 } // scrptm

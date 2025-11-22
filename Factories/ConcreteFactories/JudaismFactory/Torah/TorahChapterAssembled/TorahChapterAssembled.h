@@ -8,10 +8,10 @@
 namespace scrptm {
     class TorahChapterAssembled {
         const unsigned char index;
-        std::vector<std::unique_ptr<const TorahVerseAssembled>> verses;
+        std::vector<std::unique_ptr<TorahVerseAssembled>> verses;
 
     public:
-        TorahChapterAssembled(unsigned char index, std::vector<std::unique_ptr<const TorahVerseAssembled>> verses);
+        TorahChapterAssembled(unsigned char index, std::vector<std::unique_ptr<TorahVerseAssembled>> verses);
 
         [[nodiscard]] unsigned char getIndex() const;
         [[nodiscard]] const std::vector<std::unique_ptr<const TorahVerseAssembled>> &getVerses() const;

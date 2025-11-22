@@ -9,16 +9,16 @@
 namespace scrptm {
     class TorahVerseAssembled {
         const unsigned int index;
-        const std::unique_ptr<const TorahRawVerse> usual;
-        const std::unique_ptr<const TorahRawVerse> simplified;
-        const std::unique_ptr<const TorahRawVerse> noVowel;
-        std::vector<std::unique_ptr<const TorahRawWord> > words;
+        std::unique_ptr<TorahRawVerse> usual;
+        std::unique_ptr<TorahRawVerse> simplified;
+        std::unique_ptr<TorahRawVerse> noVowel;
+        std::vector<std::unique_ptr<TorahRawWord> > words;
 
     public:
-        TorahVerseAssembled(unsigned int index, std::unique_ptr<const TorahRawVerse> usual,
-                            std::unique_ptr<const TorahRawVerse> simplified,
-                            std::unique_ptr<const TorahRawVerse> noVowel,
-                            std::vector<std::unique_ptr<const TorahRawWord> > words);
+        TorahVerseAssembled(unsigned int index, std::unique_ptr<TorahRawVerse> usual,
+                            std::unique_ptr<TorahRawVerse> simplified,
+                            std::unique_ptr<TorahRawVerse> noVowel,
+                            std::vector<std::unique_ptr<TorahRawWord> > words);
 
         [[nodiscard]] unsigned int getIndex() const;
 
@@ -28,7 +28,7 @@ namespace scrptm {
 
         [[nodiscard]] const TorahRawVerse &getNoVowel() const;
 
-        [[nodiscard]] const std::vector<std::unique_ptr<const TorahRawWord> > &getWords() const;
+        [[nodiscard]] const std::vector<std::unique_ptr<TorahRawWord> > &getWords() const;
     };
 } // scrptm
 
