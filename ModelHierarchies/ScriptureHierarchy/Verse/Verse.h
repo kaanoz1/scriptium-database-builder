@@ -1,4 +1,3 @@
-
 #ifndef SCRIPTIUM_DATABASE_BUILDER_VERSE_H
 #define SCRIPTIUM_DATABASE_BUILDER_VERSE_H
 #include <string_view>
@@ -10,16 +9,17 @@
 namespace scrptm {
     class Verse {
         const unsigned short number;
-        const std::string_view text;
-        const std::string_view textWithoutVowel;
-        const std::string_view textSimplified;
-        const std::pmr::vector<std::reference_wrapper<Word> > &words;
-        const std::pmr::vector<std::reference_wrapper<Transliteration> > &transliterations;
+        const std::string text;
+        const std::string textSimplified;
+        const std::string textWithoutVowel;
+         std::vector<std::unique_ptr<Word> > &&words;
+         std::vector<std::unique_ptr<Transliteration> > &&transliterations;
 
     public:
-        Verse(unsigned short number, std::string_view text, std::string_view text_without_vowel,
-              std::string_view text_simplified, const std::pmr::vector<std::reference_wrapper<Word> > &words,
-              const std::pmr::vector<std::reference_wrapper<Transliteration> > &transliterations);
+        Verse(unsigned short number, std::string text,
+              std::string text_simplified, std::string text_without_vowel,
+              std::vector<std::unique_ptr<Word> > &&words,
+              std::vector<std::unique_ptr<Transliteration> > &&transliterations);
 
         [[nodiscard]] const unsigned short getNumber() const;
 

@@ -8,6 +8,7 @@
 
 namespace scrptm {
     class VerseFactory : public SingleFactory<Verse> {
+    protected:
         std::vector<std::unique_ptr<WordFactory> > wordFactories;
 
     public:

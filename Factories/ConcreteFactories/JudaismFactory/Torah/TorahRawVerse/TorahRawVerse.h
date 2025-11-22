@@ -5,13 +5,14 @@
 namespace scrptm {
     class TorahRawVerse {
         const unsigned short index;
-        const std::string text;
+        std::string text;
 
     public:
         TorahRawVerse(unsigned short index, std::string text);
 
         [[nodiscard]] unsigned short getIndex() const;
         [[nodiscard]] std::string_view getText() const;
+        [[nodiscard]] std::string giveText();
     };
 } // scrptm
 

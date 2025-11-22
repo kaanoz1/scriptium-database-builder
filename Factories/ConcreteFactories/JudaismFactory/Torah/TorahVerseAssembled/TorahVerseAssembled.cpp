@@ -27,7 +27,24 @@ namespace scrptm {
         return *this->usual;
     }
 
+
     const std::vector<std::unique_ptr<TorahRawWord> > &TorahVerseAssembled::getWords() const {
         return this->words;
+    }
+
+    std::unique_ptr<TorahRawVerse> TorahVerseAssembled::giveUsual() {
+        return std::move(this->usual);
+    }
+
+    std::unique_ptr<TorahRawVerse> TorahVerseAssembled::giveSimplified() {
+        return std::move(this->simplified);
+    }
+
+    std::unique_ptr<TorahRawVerse> TorahVerseAssembled::giveNoVowel() {
+        return std::move(this->noVowel);
+    }
+
+    std::vector<std::unique_ptr<TorahRawWord> > TorahVerseAssembled::giveWords() {
+        return std::move(this->words);
     }
 } // scrptm

@@ -1,16 +1,14 @@
-
 #include "Verse.h"
 
+#include <algorithm>
+
 namespace scrptm {
-    Verse::Verse(unsigned short number, std::string_view text, std::string_view text_without_vowel,
-                 std::string_view text_simplified, const std::pmr::vector<std::reference_wrapper<Word> > &words,
-                 const std::pmr::vector<std::reference_wrapper<Transliteration> > &transliterations)
-        : number(number),
-          text(text),
-          textWithoutVowel(text_without_vowel),
-          textSimplified(text_simplified),
-          words(words),
-          transliterations(transliterations) {
+    Verse::Verse(unsigned short number, std::string text, std::string text_simplified, std::string text_without_vowel,
+                 std::vector<std::unique_ptr<Word> > &&words,
+                 std::vector<std::unique_ptr<Transliteration> > &&transliterations) : number(number),
+        text(std::move(text)),
+        textSimplified(std::move(text_simplified)), textWithoutVowel(std::move(text_without_vowel)),
+        words(std::move(words)), transliterations(std::move(transliterations)) {
     }
 
 

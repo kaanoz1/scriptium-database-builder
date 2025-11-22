@@ -29,6 +29,14 @@ namespace scrptm {
         [[nodiscard]] const TorahRawVerse &getNoVowel() const;
 
         [[nodiscard]] const std::vector<std::unique_ptr<TorahRawWord> > &getWords() const;
+
+        [[nodiscard]] std::unique_ptr<TorahRawVerse> giveUsual();
+
+        [[nodiscard]] std::unique_ptr<TorahRawVerse> giveSimplified();
+
+        [[nodiscard]] std::unique_ptr<TorahRawVerse> giveNoVowel();
+
+        [[nodiscard]] std::vector<std::unique_ptr<TorahRawWord> > giveWords();
     };
 } // scrptm
 
