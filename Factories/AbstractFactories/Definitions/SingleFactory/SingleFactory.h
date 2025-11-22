@@ -5,10 +5,10 @@
 namespace scrptm {
     template<typename T>
     class SingleFactory {
-
     public:
         virtual ~SingleFactory() = default;
-        virtual T construct() const = 0;
+
+        virtual std::unique_ptr<T> construct() const = 0;
     };
 }
 

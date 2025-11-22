@@ -10,10 +10,9 @@ namespace scrptm {
     class WordFactory : public SingleFactory<Word> {
         std::vector<std::unique_ptr<RootFactory>> rootFactories;
     public:
+        ~WordFactory() override = default;
 
-        virtual ~WordFactory() = default;
-
-        Word construct() const override;
+        [[nodiscard]] std::unique_ptr<Word> construct() const override;
     };
 } // scrptm
 

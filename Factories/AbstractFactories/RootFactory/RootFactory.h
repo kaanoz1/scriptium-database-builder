@@ -8,7 +8,7 @@ namespace scrptm {
     public:
         ~RootFactory() override = default;
 
-        [[nodiscard]] Root construct() const override = 0;
+        [[nodiscard]] std::unique_ptr<Root> construct() const override = 0;
     };
 }
 

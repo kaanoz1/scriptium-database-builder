@@ -2,6 +2,7 @@
 #define SCRIPTIUM_DATABASE_BUILDER_SECTIONFACTORY_H
 #include <memory>
 
+#include "../../../ModelHierarchies/ScriptureHierarchy/Scripture/Scripture.h"
 #include "../../../ModelHierarchies/ScriptureHierarchy/Section/Section.h"
 #include "../Definitions/SingleFactory/SingleFactory.h"
 
@@ -12,7 +13,7 @@ namespace scrptm {
     public:
         ~SectionFactory() override = default;
 
-        Section construct() const override = 0;
+        [[nodiscard]] std::unique_ptr<Section> construct() const override = 0;
      };
 } // scrptm
 

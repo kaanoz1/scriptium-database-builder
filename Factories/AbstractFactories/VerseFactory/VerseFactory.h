@@ -14,7 +14,7 @@ namespace scrptm {
         ~VerseFactory() override = default;
 
 
-        virtual Verse construct() const override = 0;
+         [[nodiscard]] std::unique_ptr<Verse> construct() const override = 0;
     };
 } // scrptm
 

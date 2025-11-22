@@ -1,38 +1,36 @@
-
 #include "Scripture.h"
 
+#include <algorithm>
+#include <memory>
+
 namespace scrptm {
-    Scripture::Scripture(const std::string_view name, const unsigned char code, const unsigned char number,
-                         const std::pmr::vector<std::reference_wrapper<ScriptureMeaning> > &meanings,
-                         const std::pmr::vector<std::reference_wrapper<Section> > &sections)
+    Scripture::Scripture(std::string &&name, const unsigned char code, const unsigned char number,
+                         std::vector<std::unique_ptr<ScriptureMeaning> >&& meanings,
+                         std::vector<std::unique_ptr<Section> >&& sections)
         : name(name),
           code(code),
           number(number),
-          meanings(meanings),
-          sections(sections) {
+          meanings(std::move(meanings)),
+          sections(std::move(sections)) {
     }
 
-    const unsigned char Scripture::getCode() const {
+    unsigned char Scripture::getCode() const {
         return this->code;
     }
 
-    const std::pmr::vector<std::reference_wrapper<ScriptureMeaning> > &Scripture::getMeanings() const {
+    const std::vector<std::unique_ptr<ScriptureMeaning> > &Scripture::getMeanings() const {
         return this->meanings;
     }
 
-    const std::string_view Scripture::getName() const {
+    std::string_view Scripture::getName() const {
         return this->name;
     }
 
-    const unsigned char Scripture::getNumber() const {
+    unsigned char Scripture::getNumber() const {
         return this->number;
     }
 
-    const std::pmr::vector<std::reference_wrapper<Section> > &Scripture::getSections() const {
+    const std::vector<std::unique_ptr<Section> > &Scripture::getSections() const {
         return this->sections;
     }
-
-
-
-
 }

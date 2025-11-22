@@ -1,6 +1,6 @@
-
 #ifndef SCRIPTIUM_DATABASE_BUILDER_SCRIPTURE_H
 #define SCRIPTIUM_DATABASE_BUILDER_SCRIPTURE_H
+#include <memory>
 #include <string_view>
 #include <vector>
 
@@ -8,27 +8,27 @@
 #include "../ScriptureMeaning/ScriptureMeaning.h"
 
 namespace scrptm {
-     class Scripture {
-        const std::string_view name;
+    class Scripture {
+        const std::string name;
         const unsigned char code;
         const unsigned char number;
-        const std::pmr::vector<std::reference_wrapper<ScriptureMeaning> > &meanings;
-        const std::pmr::vector<std::reference_wrapper<Section> > &sections;
+        std::vector<std::unique_ptr<ScriptureMeaning> > meanings;
+        std::vector<std::unique_ptr<Section> > sections;
 
     public:
-        Scripture(std::string_view name, unsigned char code, unsigned char number,
-                  const std::pmr::vector<std::reference_wrapper<ScriptureMeaning> > &meanings,
-                  const std::pmr::vector<std::reference_wrapper<Section> > &sections);
+        Scripture(std::string &&name, unsigned char code, unsigned char number,
+                  std::vector<std::unique_ptr<ScriptureMeaning> >&& meanings,
+                  std::vector<std::unique_ptr<Section> >&& sections);
 
-        [[nodiscard]] const std::string_view getName() const;
+        [[nodiscard]] std::string_view getName() const;
 
-        [[nodiscard]] const unsigned char getCode() const;
+        [[nodiscard]] unsigned char getCode() const;
 
-        [[nodiscard]] const unsigned char getNumber() const;
+        [[nodiscard]] unsigned char getNumber() const;
 
-        [[nodiscard]] const std::pmr::vector<std::reference_wrapper<Section> > &getSections() const;
+        [[nodiscard]] const std::vector<std::unique_ptr<Section> > &getSections() const;
 
-        [[nodiscard]] const std::pmr::vector<std::reference_wrapper<ScriptureMeaning> > &getMeanings() const;
+        [[nodiscard]] const std::vector<std::unique_ptr<ScriptureMeaning> > &getMeanings() const;
     };
 }
 

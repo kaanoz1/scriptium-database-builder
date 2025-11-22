@@ -13,7 +13,7 @@ namespace scrptm {
     public:
         ~ScriptureFactory() override = default;
 
-        Scripture construct() const override;
+        [[nodiscard]] std::unique_ptr<Scripture> construct() const override;
 
     };
 } // scrptm
