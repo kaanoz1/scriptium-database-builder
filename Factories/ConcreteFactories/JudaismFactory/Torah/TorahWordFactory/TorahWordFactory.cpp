@@ -17,7 +17,7 @@ namespace scrptm {
 
         for (const auto &rootFactory: this->rootFactories) {
             if (rootFactory == nullptr) {
-                Logger::LogWarning(std::format("En countered a null root. Word: {}, lemmaId: {}", word->getText(),
+                Logger::LogWarning(std::format("Encountered a null root. Word: {}, lemmaId: {}", word->getText(),
                                                word->getLemma()));
                 continue;
             }

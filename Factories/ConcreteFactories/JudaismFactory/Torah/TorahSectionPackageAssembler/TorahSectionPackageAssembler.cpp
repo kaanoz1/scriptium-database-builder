@@ -100,7 +100,7 @@ namespace scrptm {
             }
 
             auto torahChapterAssembled = std::make_unique<TorahChapterAssembled>(
-                i, std::move(verses));
+                i, std::move(sectionNameHebrew + " - " + std::to_string(i + 1)), std::move(verses));
 
             chaptersAssembled.push_back(std::move(torahChapterAssembled));
         }

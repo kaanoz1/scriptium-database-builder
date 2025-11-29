@@ -21,7 +21,7 @@ namespace scrptm {
 
         [[nodiscard]] unsigned short getNumber() const;
 
-        [[nodiscard]] std::string_view getName() const;
+        [[nodiscard]] std::string getName() const;
 
         [[nodiscard]] const std::vector<std::unique_ptr<Chapter> > &getChapters() const;
 

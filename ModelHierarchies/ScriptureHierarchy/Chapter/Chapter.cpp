@@ -9,7 +9,7 @@ namespace scrptm {
     }
 
 
-    std::string_view scrptm::Chapter::getName() const {
+    std::string scrptm::Chapter::getName() const {
         return this->name;
     }
 

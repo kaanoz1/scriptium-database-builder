@@ -10,21 +10,21 @@
 namespace scrptm {
     class Scripture {
         const std::string name;
-        const unsigned char code;
-        const unsigned char number;
+        const char code;
+        const int number;
         std::vector<std::unique_ptr<ScriptureMeaning> > meanings;
         std::vector<std::unique_ptr<Section> > sections;
 
     public:
-        Scripture(std::string &&name, unsigned char code, unsigned char number,
-                  std::vector<std::unique_ptr<ScriptureMeaning> >&& meanings,
-                  std::vector<std::unique_ptr<Section> >&& sections);
+        Scripture(std::string &&name, char code, int number,
+                  std::vector<std::unique_ptr<ScriptureMeaning> > &&meanings,
+                  std::vector<std::unique_ptr<Section> > &&sections);
 
-        [[nodiscard]] std::string_view getName() const;
+        [[nodiscard]] std::string getName() const;
 
-        [[nodiscard]] unsigned char getCode() const;
+        [[nodiscard]] char getCode() const;
 
-        [[nodiscard]] unsigned char getNumber() const;
+        [[nodiscard]] int getNumber() const;
 
         [[nodiscard]] const std::vector<std::unique_ptr<Section> > &getSections() const;
 

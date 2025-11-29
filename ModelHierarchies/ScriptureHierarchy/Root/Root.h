@@ -12,9 +12,9 @@ namespace scrptm {
     public:
         Root(std::string latin, std::string own);
 
-        [[nodiscard]] const std::string_view getLatin() const;
+        [[nodiscard]] const std::string getLatin() const;
 
-        [[nodiscard]] const std::string_view getOwn() const;
+        [[nodiscard]] const std::string getOwn() const;
     };
 }
 

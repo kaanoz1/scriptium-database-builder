@@ -18,7 +18,7 @@ namespace scrptm {
         return this->sequence_number;
     }
 
-    std::string_view Word::getText() const {
+    std::string Word::getText() const {
         return this->text;
     }
 

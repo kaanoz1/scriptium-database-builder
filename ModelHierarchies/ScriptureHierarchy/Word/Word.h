@@ -21,7 +21,7 @@ namespace scrptm {
 
         [[nodiscard]] unsigned int getSequenceNumber() const;
 
-        [[nodiscard]] std::string_view getText() const;
+        [[nodiscard]] std::string getText() const;
 
         [[nodiscard]] std::string_view getTextWithoutVowel() const;
 

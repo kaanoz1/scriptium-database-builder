@@ -4,7 +4,7 @@
 #include <memory>
 
 namespace scrptm {
-    Scripture::Scripture(std::string &&name, const unsigned char code, const unsigned char number,
+    Scripture::Scripture(std::string &&name, const char code, const  int number,
                          std::vector<std::unique_ptr<ScriptureMeaning> >&& meanings,
                          std::vector<std::unique_ptr<Section> >&& sections)
         : name(name),
@@ -14,7 +14,7 @@ namespace scrptm {
           sections(std::move(sections)) {
     }
 
-    unsigned char Scripture::getCode() const {
+    char Scripture::getCode() const {
         return this->code;
     }
 
@@ -22,11 +22,11 @@ namespace scrptm {
         return this->meanings;
     }
 
-    std::string_view Scripture::getName() const {
+    std::string Scripture::getName() const {
         return this->name;
     }
 
-    unsigned char Scripture::getNumber() const {
+    int Scripture::getNumber() const {
         return this->number;
     }
 

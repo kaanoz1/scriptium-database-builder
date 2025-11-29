@@ -6,7 +6,7 @@ namespace scrptm {
     }
 
 
-     std::string_view Meaning::getMeaning() const {
+     std::string Meaning::getMeaning() const {
         return this->meaning;
     }
 

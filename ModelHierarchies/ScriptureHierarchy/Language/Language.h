@@ -6,18 +6,18 @@
 namespace scrptm {
     class Language {
     private:
-        const std::string_view langOwn;
-        const std::string_view langEnglish;
-        const std::string_view langCode;
+        const std::string langOwn;
+        const std::string langEnglish;
+        const std::string langCode;
 
     public:
         Language(std::string_view lang_own, std::string_view lang_english, std::string_view lang_code);
 
-        [[nodiscard]] const std::string_view getLanguageCode() const;
+        [[nodiscard]] const std::string getLanguageCode() const;
 
-        [[nodiscard]] const std::string_view getLanguageOwn() const;
+        [[nodiscard]] const std::string getLanguageOwn() const;
 
-        [[nodiscard]] const std::string_view getLanguageEnglish() const;
+        [[nodiscard]] const std::string getLanguageEnglish() const;
     };
 }
 

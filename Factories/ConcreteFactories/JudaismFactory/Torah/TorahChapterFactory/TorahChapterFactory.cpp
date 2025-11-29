@@ -22,7 +22,7 @@ namespace scrptm {
 
     std::unique_ptr<Chapter> TorahChapterFactory::construct() const {
         const auto number = this->chapterAssembled->getIndex() + 1;
-        auto name = std::to_string(number);
+        auto name =   this->chapterAssembled->getName();
 
         std::vector<std::unique_ptr<ChapterMeaning> > chapterMeanings{};
         std::vector<std::unique_ptr<Verse> > verses{};

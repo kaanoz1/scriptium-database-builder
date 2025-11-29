@@ -107,10 +107,25 @@ add_executable(scriptium_database_builder main.cpp
         Factories/ConcreteFactories/JudaismFactory/Torah/TorahFactory/TorahFactory.h
         Writers/DatabasePool/DatabasePool.cpp
         Writers/DatabasePool/DatabasePool.h
+        Writers/ScriptureWriter/ScriptureWriter.cpp
+        Writers/ScriptureWriter/ScriptureWriter.h
+        Writers/SectionWriter/SectionWriter.cpp
+        Writers/SectionWriter/SectionWriter.h
+        Writers/ChapterWriter/ChapterWriter.cpp
+        Writers/ChapterWriter/ChapterWriter.h
+        Writers/VerseWriter/VerseWriter.cpp
+        Writers/VerseWriter/VerseWriter.h
+        Writers/WordWriter/WordWriter.cpp
+        Writers/WordWriter/WordWriter.h
+        Writers/RootWriter/RootWriter.cpp
+        Writers/RootWriter/RootWriter.h
 )
 
 find_package(nlohmann_json REQUIRED)
 find_package(Pugixml REQUIRED)
+find_package(unixodbc CONFIG REQUIRED)
+find_package(nanodbc CONFIG REQUIRED)
 
 target_link_libraries(scriptium_database_builder PRIVATE nlohmann_json::nlohmann_json)
 target_link_libraries(scriptium_database_builder PRIVATE pugixml)
+target_link_libraries(scriptium_database_builder PRIVATE nanodbc)

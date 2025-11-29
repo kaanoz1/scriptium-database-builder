@@ -10,11 +10,11 @@ namespace scrptm {
     }
 
 
-    const std::string_view Root::getLatin() const {
+    const std::string Root::getLatin() const {
         return this->latin;
     }
 
-    const std::string_view Root::getOwn() const {
+    const std::string Root::getOwn() const {
         return this->own;
     }
 }

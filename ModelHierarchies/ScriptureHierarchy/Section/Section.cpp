@@ -9,7 +9,7 @@ namespace scrptm {
         name(std::move(name)), chapters(std::move(chapters)), meanings(std::move(meanings)) {
     }
 
-    std::string_view Section::getName() const {
+    std::string Section::getName() const {
         return this->name;
     }
 

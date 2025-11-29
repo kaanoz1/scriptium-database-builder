@@ -16,7 +16,7 @@ namespace scrptm {
                     this->sectionFactory.push_back(std::make_unique<TorahSectionFactory>(std::move(sectionsAssembled.at(i))));
         }
 
-        Logger::LogDebug("Section factorires are set");
+        Logger::LogDebug("Section factories are set");
     }
 
     std::unique_ptr<Scripture> TorahFactory::construct() const {

@@ -323,6 +323,7 @@ namespace scrptm {
 
             result.emplace_back(std::move(package));
         }
+
         return std::move(result);
     }
 } // scrptm

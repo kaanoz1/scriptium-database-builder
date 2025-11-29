@@ -21,15 +21,15 @@ namespace scrptm {
     }
 
 
-    const std::string_view Verse::getText() const {
+    const std::string Verse::getText() const {
         return this->text;
     }
 
-    const std::string_view Verse::getTextSimplified() const {
+    const std::string Verse::getTextSimplified() const {
         return this->textSimplified;
     }
 
-    const std::string_view Verse::getTextWithoutVowel() const {
+    const std::string Verse::getTextWithoutVowel() const {
         return this->textWithoutVowel;
     }
 

@@ -8,6 +8,7 @@ namespace scrptm {
     class Logger {
     public:
         enum class LogLevel {
+            Success,
             Debug,
             Information,
             Warning,
@@ -25,6 +26,10 @@ namespace scrptm {
         static void Log(LogLevel level, std::string_view message, std::ostream &stream);
 
     public:
+        static void LogSuccess(std::string_view message) {
+            Log(LogLevel::Success, message, std::cout);
+        }
+
         static void LogDebug(std::string_view message) {
             Log(LogLevel::Debug, message, std::cout);
         }

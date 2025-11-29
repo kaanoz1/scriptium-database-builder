@@ -8,6 +8,7 @@ namespace scrptm {
 
     std::string_view Logger::getLevelAbbreviation(LogLevel level) {
         switch (level) {
+            case LogLevel::Success: return "SUCCESS";
             case LogLevel::Debug: return "DEBUG";
             case LogLevel::Information: return "INFO";
             case LogLevel::Warning: return "WARN";
@@ -19,6 +20,7 @@ namespace scrptm {
 
     std::string_view Logger::getLevelColorCode(LogLevel level) {
         switch (level) {
+            case LogLevel::Success: return "\033[0;32m";
             case LogLevel::Debug: return "\033[90m";
             case LogLevel::Information: return "\033[34m";
             case LogLevel::Warning: return "\033[33m";

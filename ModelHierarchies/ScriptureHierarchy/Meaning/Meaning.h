@@ -12,7 +12,7 @@ namespace scrptm {
     public:
         Meaning(std::string meaning, const Language &language);
 
-        [[nodiscard]] std::string_view getMeaning() const;
+        [[nodiscard]] std::string getMeaning() const;
         [[nodiscard]] const Language& getLanguage() const;
     };
 }

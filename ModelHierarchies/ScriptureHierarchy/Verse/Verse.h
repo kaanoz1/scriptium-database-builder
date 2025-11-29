@@ -12,7 +12,7 @@ namespace scrptm {
         const std::string text;
         const std::string textSimplified;
         const std::string textWithoutVowel;
-        std::vector<std::unique_ptr<Word> > &&words;
+        std::vector<std::unique_ptr<Word> > words;
         std::vector<std::unique_ptr<Transliteration> > &&transliterations;
 
     public:
@@ -23,11 +23,11 @@ namespace scrptm {
 
         [[nodiscard]] const unsigned short getNumber() const;
 
-        [[nodiscard]] const std::string_view getText() const;
+        [[nodiscard]] const std::string getText() const;
 
-        [[nodiscard]] const std::string_view getTextWithoutVowel() const;
+        [[nodiscard]] const std::string getTextWithoutVowel() const;
 
-        [[nodiscard]] const std::string_view getTextSimplified() const;
+        [[nodiscard]] const std::string getTextSimplified() const;
 
         [[nodiscard]] const std::vector<std::unique_ptr<Word> > &getWords() const;
 
