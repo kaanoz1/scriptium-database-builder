@@ -5,12 +5,13 @@
 namespace scrptm {
     class SectionIndicator {
         ScriptureIndicator scriptureIndicator;
-        const unsigned short  sectionNumber;
+        const unsigned short sectionNumber;
 
     public:
-        SectionIndicator(char scriptureCode, unsigned short sectionNumber);
+        SectionIndicator(unsigned char scriptureCode, unsigned short sectionNumber);
 
-        char getScriptureCode() const;
+        unsigned char getScriptureCode() const;
+
         unsigned short getSectionNumber() const;
     };
 } // scrptm

@@ -1,14 +1,14 @@
 #include "SectionIndicator.h"
 
 namespace scrptm {
-    SectionIndicator::SectionIndicator(const char scriptureCode,
+    SectionIndicator::SectionIndicator(const unsigned char scriptureCode,
                                        const unsigned short sectionNumber) : scriptureIndicator(
                                                                                  scriptureCode),
 
                                                                              sectionNumber(sectionNumber) {
     }
 
-    char SectionIndicator::getScriptureCode() const {
+    unsigned char SectionIndicator::getScriptureCode() const {
         return this->scriptureIndicator.getScriptureCode();
     }
 

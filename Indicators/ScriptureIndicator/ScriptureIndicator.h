@@ -4,13 +4,12 @@
 
 namespace scrptm {
     class ScriptureIndicator {
-        const char scriptureCode;
+        const unsigned char scriptureCode;
 
     public:
-        explicit ScriptureIndicator(char scriptureCode);
+        explicit ScriptureIndicator(unsigned char scriptureCode);
 
-        char getScriptureCode() const;
-
+        unsigned char getScriptureCode() const;
     };
 } // scrptm
 
