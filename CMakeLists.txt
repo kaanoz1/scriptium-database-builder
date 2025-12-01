@@ -137,6 +137,8 @@ add_executable(scriptium_database_builder main.cpp
         Indicators/SectionIndicator/SectionIndicator.h
         Indicators/ChapterIndicator/ChapterIndicator.cpp
         Indicators/ChapterIndicator/ChapterIndicator.h
+        Indicators/VerseIndicator/VerseIndicator.cpp
+        Indicators/VerseIndicator/VerseIndicator.h
 )
 
 find_package(nlohmann_json REQUIRED)
