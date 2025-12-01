@@ -121,6 +121,12 @@ add_executable(scriptium_database_builder main.cpp
         Writers/RootWriter/RootWriter.h
         Factories/ConcreteFactories/JudaismFactory/Translation/SefariaTranslation/SefariaTranslationFile/SefariaTranslationFile.cpp
         Factories/ConcreteFactories/JudaismFactory/Translation/SefariaTranslation/SefariaTranslationFile/SefariaTranslationFile.h
+        Factories/ConcreteFactories/JudaismFactory/Translation/SefariaTranslation/SefariaTranslationFileLogger/SefariaTranslationFileLogger.cpp
+        Factories/ConcreteFactories/JudaismFactory/Translation/SefariaTranslation/SefariaTranslationFileLogger/SefariaTranslationFileLogger.h
+        Factories/ConcreteFactories/JudaismFactory/Translation/SefariaTranslation/SefariaTranslationFileSorter/SefariaTranslationFileSorter.cpp
+        Factories/ConcreteFactories/JudaismFactory/Translation/SefariaTranslation/SefariaTranslationFileSorter/SefariaTranslationFileSorter.h
+        Factories/ConcreteFactories/JudaismFactory/Translation/SefariaTranslation/SefariaTranslationFileLogger/SefariaTranslationFileLogger.cpp
+        Factories/ConcreteFactories/JudaismFactory/Translation/SefariaTranslation/SefariaTranslationFileLogger/SefariaTranslationFileLogger.h
 )
 
 find_package(nlohmann_json REQUIRED)

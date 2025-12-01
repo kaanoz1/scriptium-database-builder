@@ -25,6 +25,11 @@ namespace scrptm {
     }
 
 
+    const std::string& SefariaTranslationFile::getTitle() const {
+        return this->sectionName;
+    }
+
+
     const std::vector<std::vector<std::string> > &SefariaTranslationFile::getTexts() const {
         return texts;
     }
