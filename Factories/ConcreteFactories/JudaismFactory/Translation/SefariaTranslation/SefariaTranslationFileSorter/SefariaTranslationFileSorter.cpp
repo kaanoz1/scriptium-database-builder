@@ -2,11 +2,12 @@
 
 #include <format>
 #include <unordered_map>
-
+#include <unordered_set>
+#include <algorithm>
 #include "../../../../../../Utils/Logger/Logger.h"
 
 namespace scrptm {
-    std::vector<std::string> SefariaTranslationFileSorter::meanings =
+    const std::vector<std::string> SefariaTranslationFileSorter::meanings =
     {
         "Genesis",
         "Exodus",
@@ -49,43 +50,54 @@ namespace scrptm {
         "Malachi"
     };
 
-    std::vector<SefariaTranslationFile>
-    SefariaTranslationFileSorter::sort(std::vector<SefariaTranslationFile> &&files) {
-        const size_t filesSize = files.size();
-        const size_t meaningsSize = meanings.size();
 
-        if (filesSize != meaningsSize) {
+    std::vector<std::optional<SefariaTranslationFile> >
+    SefariaTranslationFileSorter::sort(std::vector<std::optional<SefariaTranslationFile> > &&files) {
+        const size_t requiredSize = meanings.size();
+        if (files.size() != requiredSize) {
             Logger::LogFatal(std::format(
-                "Given files and meanings size are not equal. Given array size: {}. Meanings size: {}", filesSize,
-                meaningsSize));
-            throw std::runtime_error("Sizes are not equal");
+                "Size mismatch error. Given files size: {}. Meanings size: {}", files.size(), requiredSize));
+            throw std::runtime_error("Sizes of files and meanings are not equal.");
         }
 
 
-        std::unordered_map<std::string, SefariaTranslationFile> fileMap;
-        fileMap.reserve(filesSize);
-        for (auto& file : files) {
-            fileMap.emplace(file.getTitle(), std::move(file));
-        }
+        std::unordered_set<std::string> uniqueTitles;
+        std::unordered_map<std::string, SefariaTranslationFile> nonNullFilesMap;
 
-        std::vector<SefariaTranslationFile> sortedFiles;
-        sortedFiles.reserve(filesSize);
+        for (auto &optionalFile: files) {
+            if (optionalFile.has_value()) {
+                SefariaTranslationFile file = std::move(optionalFile.value());
+                std::string title = file.getTitle();
 
-        for (const auto& requiredTitle : meanings) {
-            auto it = fileMap.find(requiredTitle);
+                if (uniqueTitles.contains(title)) {
+                    Logger::LogFatal(std::format(
+                        "Uniqueness error. Duplicate file title found: '{}'.", title));
+                    throw std::runtime_error("Files must have unique non-null titles.");
+                }
+                uniqueTitles.insert(title);
 
-            if (it == fileMap.end()) {
-                Logger::LogFatal(std::format("Internal error: Required file '{}' not found in map during sorting.", requiredTitle));
-                throw std::runtime_error("Required file not found during sorting");
+                if (auto it = std::ranges::find(meanings, title); it == meanings.cend()) {
+                    Logger::LogFatal(std::format(
+                        "Title mismatch error. File title '{}' found in files but not in meanings.", title));
+                    throw std::runtime_error("Non-null file title must exist in meanings list.");
+                }
+
+                nonNullFilesMap.emplace(title, std::move(file));
             }
-
-            sortedFiles.push_back(std::move(it->second));
-
-            fileMap.erase(it);
         }
+
+
+        std::vector<std::optional<SefariaTranslationFile> > sortedFiles;
+        sortedFiles.reserve(requiredSize);
+
+        for (const auto &requiredTitle: meanings) {
+            if (auto it = nonNullFilesMap.find(requiredTitle); it != nonNullFilesMap.end())
+                sortedFiles.emplace_back(std::move(it->second));
+            else
+                sortedFiles.emplace_back(std::nullopt);
+        }
+
 
         return sortedFiles;
     }
-
-
 } // scrptm

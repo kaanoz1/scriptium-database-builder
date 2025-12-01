@@ -13,7 +13,7 @@ namespace scrptm {
 
 
 
-        std::vector<SefariaTranslationFile> sort(std::vector<std::optional<SefariaTranslationFile>>&& files);
+        std::vector<std::optional<SefariaTranslationFile>> sort(std::vector<std::optional<SefariaTranslationFile>>&& files);
     };
 } // scrptm
 
