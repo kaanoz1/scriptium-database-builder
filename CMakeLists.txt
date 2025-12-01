@@ -143,6 +143,8 @@ add_executable(scriptium_database_builder main.cpp
         ModelHierarchies/TranslationHierarchy/Footnote/Footnote.h
         ModelHierarchies/TranslationHierarchy/TranslationText/TranslationText.cpp
         ModelHierarchies/TranslationHierarchy/TranslationText/TranslationText.h
+        ModelHierarchies/TranslationHierarchy/Translation/Translation.cpp
+        ModelHierarchies/TranslationHierarchy/Translation/Translation.h
 )
 
 find_package(nlohmann_json REQUIRED)
