@@ -133,6 +133,8 @@ add_executable(scriptium_database_builder main.cpp
         Factories/ConcreteFactories/JudaismFactory/Translation/SefariaTranslation/SefariaTranslationFileExtractor/SefariaTranslationFileExtractor.h
         Indicators/ScriptureIndicator/ScriptureIndicator.cpp
         Indicators/ScriptureIndicator/ScriptureIndicator.h
+        Indicators/SectionIndicator/SectionIndicator.cpp
+        Indicators/SectionIndicator/SectionIndicator.h
 )
 
 find_package(nlohmann_json REQUIRED)
